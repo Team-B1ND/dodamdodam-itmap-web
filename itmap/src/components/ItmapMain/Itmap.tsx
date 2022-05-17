@@ -1,4 +1,4 @@
-//import {  } from "./Itmap.style.ts";
+import * as S from "./Itmap.style";
 const Itmap = () => {
   return (
     <>

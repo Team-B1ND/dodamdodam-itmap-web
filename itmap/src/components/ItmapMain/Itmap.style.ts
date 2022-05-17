@@ -1,6 +1,3 @@
 import styled from "styled-components";
 
-// export const Style = styled.div`
-//  display: flex;
-// `;
-//
+export const Style = styled.div``;
