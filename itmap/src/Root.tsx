@@ -1,21 +1,20 @@
 import React, { StrictMode } from "react";
-import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { QueryClient, QueryClientProvider } from "react-query";
 import App from "./components/App";
-import CustomThemeProvider from "components/Common/CustomThemeProvider";
-import store from "./store";
 
 const Root = () => {
+
+    const queryClient = new QueryClient();
+
     return (
-        <Provider store={store}>
-            <StrictMode>
-                <CustomThemeProvider>
-                    <BrowserRouter>
-                        <App />
-                    </BrowserRouter>
-                </CustomThemeProvider>
-            </StrictMode>
-        </Provider>
+        // <Provider>
+        <StrictMode>
+            <QueryClientProvider client={queryClient}>
+                <App />
+            </QueryClientProvider>
+        </StrictMode>
+        // </Provider>
     );
 };
 

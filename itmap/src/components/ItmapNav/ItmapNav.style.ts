@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const Style = styled.div`
-  display: flex;
+export const NavContainer = styled.div`
+  background-color: #333;
 `;
