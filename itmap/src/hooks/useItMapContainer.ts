@@ -16,7 +16,7 @@ export class MapSingleton {
     const mapContainer = document.getElementById("map");
 
     let lat = 36.5;
-    let long = 127;
+    let long = 127.5;
 
     const options = {
       center: new kakao.maps.LatLng(lat, long),
