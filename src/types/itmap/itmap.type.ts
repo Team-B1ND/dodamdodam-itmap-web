@@ -14,3 +14,17 @@ export type UserInItMap = {
 export type ItMapResponse = Response & {
   data: UserInItMap[];
 };
+
+export type ItMapData = {
+  id: string;
+  name: string;
+  generation: string;
+  profileImg: string;
+  tagImg: string;
+  explanation: string;
+  companyName: string;
+  companyLocation: string;
+  position: object;
+  devPosition: string;
+  isOpen: boolean;
+};

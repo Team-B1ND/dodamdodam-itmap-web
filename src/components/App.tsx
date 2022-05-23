@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import MapContanier from "../components/ItmapMain/index";
-import NavContainer from "../components/ItmapNav/index";
+import MapContanier from "./ItmapMain/index";
+import NavContainer from "./ItmapNav/index";
 
 
 const App = () => {

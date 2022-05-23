@@ -3,9 +3,9 @@ import { useState } from "react";
 const useData = () => {
   const [testData, setTestData] = useState([
     {
-      id: 1,
+      id: "1",
       name: "정우재",
-      generation: 4,
+      generation: "4",
       profileImg:
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
@@ -13,14 +13,14 @@ const useData = () => {
       explanation: "나는 크다",
       companyName: "(주)북한 인민군",
       companyLocation: "미국",
-      position: { lat: 36.8, lng: 127.5 },
+      position: { lat: 36.5, lng: 127 },
       devPosition: "FE",
       isOpen: false,
     },
     {
-      id: 2,
+      id: "2",
       name: "박병관",
-      generation: 4,
+      generation: "4",
       profileImg:
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
@@ -33,9 +33,9 @@ const useData = () => {
       isOpen: false,
     },
     {
-      id: 3,
+      id: "3",
       name: "임동현",
-      generation: 4,
+      generation: "4",
       profileImg:
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
@@ -48,9 +48,9 @@ const useData = () => {
       isOpen: false,
     },
     {
-      id: 4,
+      id: "4",
       name: "김상은",
-      generation: 4,
+      generation: "4",
       profileImg:
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
@@ -63,9 +63,9 @@ const useData = () => {
       isOpen: false,
     },
     {
-      id: 5,
+      id: "5",
       name: "기준",
-      generation: 4,
+      generation: "4",
       profileImg:
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
@@ -78,9 +78,9 @@ const useData = () => {
       isOpen: false,
     },
     {
-      id: 6,
+      id: "6",
       name: "금현호",
-      generation: 4,
+      generation: "4",
       profileImg:
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
@@ -93,9 +93,9 @@ const useData = () => {
       isOpen: false,
     },
     {
-      id: 7,
+      id: "7",
       name: "정우재",
-      generation: 4,
+      generation: "4",
       profileImg:
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
@@ -108,9 +108,9 @@ const useData = () => {
       isOpen: false,
     },
     {
-      id: 8,
+      id: "8",
       name: "박병관",
-      generation: 4,
+      generation: "4",
       profileImg:
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
@@ -123,9 +123,9 @@ const useData = () => {
       isOpen: false,
     },
     {
-      id: 9,
+      id: "9",
       name: "임동현",
-      generation: 4,
+      generation: "4",
       profileImg:
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
@@ -138,9 +138,9 @@ const useData = () => {
       isOpen: false,
     },
     {
-      id: 10,
+      id: "10",
       name: "김상은",
-      generation: 4,
+      generation: "4",
       profileImg:
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
@@ -153,9 +153,9 @@ const useData = () => {
       isOpen: false,
     },
     {
-      id: 11,
+      id: "11",
       name: "기준",
-      generation: 4,
+      generation: "4",
       profileImg:
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
@@ -168,9 +168,9 @@ const useData = () => {
       isOpen: false,
     },
     {
-      id: 12,
+      id: "12",
       name: "금현호",
-      generation: 4,
+      generation: "4",
       profileImg:
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
@@ -183,8 +183,6 @@ const useData = () => {
       isOpen: false,
     },
   ]);
-
-  //   let copyArray = [...testData];
 
   return {
     testData,
