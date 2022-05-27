@@ -20,7 +20,7 @@ const Itmap = () => {
 };
 
 const MapWrapper = styled.div`
-  width: 80%;
+  width: 85%;
   height: 100%;
 
   @media screen and (max-width: 500px) {

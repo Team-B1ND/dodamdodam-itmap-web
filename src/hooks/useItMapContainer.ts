@@ -1,5 +1,7 @@
-import { ItMapData } from "../types/itmap/itmap.type";
-import useData from "./useData";
+// import { ItMapData } from "../types/itmap/itmap.type";
+// import useData from "./useData";
+import { useState } from "react";
+import itMapRepository from "../repository/itmap.repository";
 
 declare global {
   interface Window {
@@ -34,7 +36,7 @@ export class MapSingleton {
           "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
         explanation: "나는 크다",
         companyName: "(주)북한 인민군",
-        companyLocation: "미국",
+        companyLocation: "경기도",
         position: { lat: 36.5, lng: 127 },
         devPosition: "FE",
         isOpen: false,
@@ -49,7 +51,7 @@ export class MapSingleton {
           "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
         explanation: "나는 크다",
         companyName: "(주)태평양 하와이안",
-        companyLocation: "미국",
+        companyLocation: "대구",
         position: { lat: 36.7, lng: 127.5 },
         devPosition: "FE",
         isOpen: false,
@@ -64,7 +66,7 @@ export class MapSingleton {
           "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
         explanation: "나는 크다",
         companyName: "원티드랩",
-        companyLocation: "미국",
+        companyLocation: "전라남도 광주",
         position: { lat: 36.6, lng: 127.5 },
         devPosition: "FE",
         isOpen: false,
@@ -79,7 +81,7 @@ export class MapSingleton {
           "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
         explanation: "나는 크다",
         companyName: "FLO",
-        companyLocation: "미국",
+        companyLocation: "서울",
         position: { lat: 36.5, lng: 127.5 },
         devPosition: "FE",
         isOpen: false,
@@ -94,7 +96,7 @@ export class MapSingleton {
           "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
         explanation: "나는 크다",
         companyName: "(주)페르소나",
-        companyLocation: "미국",
+        companyLocation: "울산",
         position: { lat: 36.6, lng: 127 },
         devPosition: "FE",
         isOpen: false,
@@ -109,7 +111,7 @@ export class MapSingleton {
           "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
         explanation: "i'm big",
         companyName: "Google",
-        companyLocation: "미국",
+        companyLocation: "창원",
         position: { lat: 35.7, lng: 126.4 },
         devPosition: "FE",
         isOpen: false,
@@ -124,7 +126,7 @@ export class MapSingleton {
           "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
         explanation: "나는 크다",
         companyName: "(주)북한 인민군",
-        companyLocation: "미국",
+        companyLocation: "경기도 광주",
         position: { lat: 35.8, lng: 127.5 },
         devPosition: "FE",
         isOpen: false,
@@ -139,7 +141,7 @@ export class MapSingleton {
           "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
         explanation: "나는 크다",
         companyName: "(주)태평양 하와이안",
-        companyLocation: "미국",
+        companyLocation: "제주도",
         position: { lat: 35.7, lng: 127.5 },
         devPosition: "FE",
         isOpen: false,
@@ -154,7 +156,7 @@ export class MapSingleton {
           "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
         explanation: "나는 크다",
         companyName: "원티드랩",
-        companyLocation: "미국",
+        companyLocation: "포항",
         position: { lat: 35.6, lng: 127.5 },
         devPosition: "FE",
         isOpen: false,
@@ -169,7 +171,7 @@ export class MapSingleton {
           "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
         explanation: "나는 크다",
         companyName: "FLO",
-        companyLocation: "미국",
+        companyLocation: "인천",
         position: { lat: 35.5, lng: 127.5 },
         devPosition: "FE",
         isOpen: false,
@@ -184,7 +186,7 @@ export class MapSingleton {
           "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
         explanation: "나는 크다",
         companyName: "(주)페르소나",
-        companyLocation: "미국",
+        companyLocation: "파주",
         position: { lat: 35.6, lng: 127 },
         devPosition: "FE",
         isOpen: false,
@@ -199,42 +201,92 @@ export class MapSingleton {
           "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
         explanation: "i'm big",
         companyName: "Google",
-        companyLocation: "미국",
+        companyLocation: "부산",
         position: { lat: 35.7, lng: 126.4 },
         devPosition: "FE",
         isOpen: false,
       },
     ];
-    const map = new kakao.maps.Map(mapContainer, options);
-    let marker;
+
+    this.map = new kakao.maps.Map(mapContainer, options);
     let zoomControl = new kakao.maps.ZoomControl();
     let mapTypeControl = new kakao.maps.MapTypeControl();
-    map.addControl(mapTypeControl, kakao.maps.ControlPosition.RIGHT);
-    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+    this.map.addControl(mapTypeControl, kakao.maps.ControlPosition.RIGHT);
+    this.map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-    for (let i = 0; i < DATA.length; i++) {
-      const markerPosition = new kakao.maps.LatLng(
-        DATA[i].position.lat,
-        DATA[i].position.lng
+    let geocoder = new kakao.maps.services.Geocoder();
+
+    const getItMapUserData = async () => {
+      try {
+        const { data } = await itMapRepository.itMap();
+        return data;
+      } catch (error) {
+        window.alert(
+          "데이터를 불러오는데 실패하였습니다. 다시 시도하여 주십시요."
+        );
+      }
+    };
+
+    const fetchAddress = (testArrayData: number) => {
+      geocoder.addressSearch(
+        getItMapUserData,
+        (result: number[] | any, status: number) => {
+          if (status === kakao.maps.services.Status.OK) {
+            const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            console.log(result);
+
+            let marker = new kakao.maps.Marker({
+              map: this.map,
+              position: coords,
+            });
+
+            let infowindow = new kakao.maps.InfoWindow({
+              content:
+                '<div style="width:150px;text-align:center;padding:6px 0;">Hello</div>',
+            });
+            infowindow.open(this.map, marker);
+
+            // this.map.setCenter(coords);
+          }
+        }
       );
+    };
 
-      marker = new kakao.maps.Marker({
-        position: markerPosition,
-        title: DATA[i].companyName,
-      });
-      marker.setMap(map);
-      const content = `<h1>Hello</h1>`;
+    for (const testArrayData in DATA) {
+      // let markerTemp = [] as any;
+      // console.log(testArrayData);
 
-      var overlay = new kakao.maps.CustomOverlay({
-        content: content,
-        map: map,
-        position: marker.getPosition(),
-      });
+      fetchAddress(Number(testArrayData));
     }
 
-    console.log(marker);
+    // testArrayData.map((item) => {
+    //   const markerPosition = new kakao.maps.LatLng(
+    //     item.position.lat,
+    //     item.position.lng
+    //   );
 
-    console.log(overlay);
+    //   const markerData = new kakao.maps.Marker({
+    //     position: markerPosition,
+    //     title: item.companyName,
+    //   });
+
+    //   markerData.setMap(this.map);
+    //   markerTemp.push(markerData);
+    // });
+
+    // console.log(markerTemp);
+
+    // const content = `<h1>Hello</h1>`;
+
+    // let overlay = new kakao.maps.CustomOverlay({
+    //   content: content,
+    //   map: this.map,
+    //   position: markerTemp.getPosition(),
+    // });
+
+    // kakao.maps.event.addListener(markerTemp, "click", () => {
+    //   overlay.setMap(this.map);
+    // });
   }
 
   static getInstance() {

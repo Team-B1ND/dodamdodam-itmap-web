@@ -4,12 +4,12 @@ import NavContainer from "./ItmapNav/index";
 
 
 const App = () => {
-    return (
-        <AppSection>
-            <NavContainer />
-            <MapContanier />
-        </AppSection>
-    );
+  return (
+    <AppSection>
+      <NavContainer />
+      <MapContanier />
+    </AppSection>
+  );
 };
 
 const AppSection = styled.section`

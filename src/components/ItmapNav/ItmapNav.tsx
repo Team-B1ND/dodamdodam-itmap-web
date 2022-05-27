@@ -8,8 +8,7 @@ const ItmapNav = () => {
   return (
     <NavWrapper>
       <S.NavContainer>
-        {testData.map((item) => {
-
+        {/* {testData.map((item) => {
           return (
             <>
               {item.companyName}
@@ -17,14 +16,14 @@ const ItmapNav = () => {
             </>
           );
         }
-        )}
+        )} */}
       </S.NavContainer>
     </NavWrapper>
   );
 };
 
 const NavWrapper = styled.div`
-  width: 20%;
+  width: 15%;
 
   @media screen and (max-width: 500px) {
     height: 60vh;
