@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useData = () => {
-  const [testData, setTestData] = useState([
+  const testData = [
     {
       id: "1",
       name: "정우재",
@@ -182,11 +182,10 @@ const useData = () => {
       devPosition: "FE",
       isOpen: false,
     },
-  ]);
+  ];
 
   return {
     testData,
-    setTestData,
   };
 };
 

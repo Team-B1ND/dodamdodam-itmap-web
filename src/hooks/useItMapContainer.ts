@@ -1,7 +1,5 @@
-// import { ItMapData } from "../types/itmap/itmap.type";
 // import useData from "./useData";
-import { useState } from "react";
-import itMapRepository from "../repository/itmap.repository";
+// import itMapRepository from "repository/itmap.repository";
 
 declare global {
   interface Window {
@@ -16,8 +14,11 @@ export class MapSingleton {
   static instance: MapSingleton;
 
   public map: any;
+  public level: any;
+  public Data: any;
 
   public async initMap() {
+    let markerTemp = [] as any;
     const mapContainer = document.getElementById("map");
     let lat = 36.5;
     let lng = 127.5;
@@ -208,84 +209,83 @@ export class MapSingleton {
       },
     ];
 
+    let geocoder = new kakao.maps.services.Geocoder();
+
     this.map = new kakao.maps.Map(mapContainer, options);
     let zoomControl = new kakao.maps.ZoomControl();
     let mapTypeControl = new kakao.maps.MapTypeControl();
     this.map.addControl(mapTypeControl, kakao.maps.ControlPosition.RIGHT);
     this.map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-    let geocoder = new kakao.maps.services.Geocoder();
+    // const getItMapUserData = async () => {
+    //   try {
+    //     const { data } = await itMapRepository.itMap();
+    //     this.Data = data;
+    //   } catch (error) {
+    //     // window.alert(
+    //     //   "데이터를 불러오는데 실패하였습니다. 다시 시도하여 주십시요."
+    //     // );
+    //     this.Data = 1;
+    //   }
+    // };
 
-    const getItMapUserData = async () => {
-      try {
-        const { data } = await itMapRepository.itMap();
-        return data;
-      } catch (error) {
-        window.alert(
-          "데이터를 불러오는데 실패하였습니다. 다시 시도하여 주십시요."
-        );
-      }
-    };
-
-    const fetchAddress = (testArrayData: number) => {
+    DATA.map((item) => {
       geocoder.addressSearch(
-        getItMapUserData,
+        item.companyLocation,
         (result: number[] | any, status: number) => {
           if (status === kakao.maps.services.Status.OK) {
             const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-            console.log(result);
 
             let marker = new kakao.maps.Marker({
               map: this.map,
               position: coords,
             });
 
-            let infowindow = new kakao.maps.InfoWindow({
-              content:
-                '<div style="width:150px;text-align:center;padding:6px 0;">Hello</div>',
-            });
-            infowindow.open(this.map, marker);
+            markerTemp.push(marker);
 
-            // this.map.setCenter(coords);
+            const content = `<span style="backGround: #fff;">Hello</span>`;
+
+            let overlay = new kakao.maps.CustomOverlay({
+              content: content,
+              map: this.map,
+              position: marker.getPosition(),
+              yAnchor: 2.6,
+            });
+
+            kakao.maps.event.addListener(marker, "click", () => {
+              overlay.setMap(this.map);
+            });
+
+            kakao.maps.event.addListener(this.map, "zoom_changed", () => {
+              this.level = this.map.getLevel();
+              if (this.level < 6) {
+                overlay.setMap(this.map);
+              } else {
+                overlay.setMap(null);
+              }
+            });
+
+            overlay.setMap(null);
           }
         }
       );
-    };
+      return markerTemp;
+    });
 
-    for (const testArrayData in DATA) {
-      // let markerTemp = [] as any;
-      // console.log(testArrayData);
+    const clusterer = new kakao.maps.MarkerClusterer({
+      map: this.map,
+      averageCenter: true,
+      minLevel: 5,
+      disableClickZoom: true,
+      calculator: [1, 3, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+    });
 
-      fetchAddress(Number(testArrayData));
-    }
+    clusterer.addMarkers(markerTemp);
 
-    // testArrayData.map((item) => {
-    //   const markerPosition = new kakao.maps.LatLng(
-    //     item.position.lat,
-    //     item.position.lng
-    //   );
+    // kakao.maps.event.addListener(clusterer, "clusterclick", (cluster: any) => {
+    //   this.level = this.map.getLevel() - 3;
 
-    //   const markerData = new kakao.maps.Marker({
-    //     position: markerPosition,
-    //     title: item.companyName,
-    //   });
-
-    //   markerData.setMap(this.map);
-    //   markerTemp.push(markerData);
-    // });
-
-    // console.log(markerTemp);
-
-    // const content = `<h1>Hello</h1>`;
-
-    // let overlay = new kakao.maps.CustomOverlay({
-    //   content: content,
-    //   map: this.map,
-    //   position: markerTemp.getPosition(),
-    // });
-
-    // kakao.maps.event.addListener(markerTemp, "click", () => {
-    //   overlay.setMap(this.map);
+    //   this.map.setLevel(this.level, { anchor: cluster.getCenter() });
     // });
   }
 
