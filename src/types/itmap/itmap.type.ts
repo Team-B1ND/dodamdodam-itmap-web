@@ -28,3 +28,9 @@ export type ItMapData = {
   devPosition: string;
   isOpen: boolean;
 };
+
+export type ItMapDataProps = {
+  props: {
+    ItMapData: ItMapData;
+  };
+};

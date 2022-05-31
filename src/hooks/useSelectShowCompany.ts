@@ -3,7 +3,9 @@ import { ItMapData } from "types/itmap/itmap.type";
 import useData from "./useData";
 
 const useSelectShowCompany = () => {
-  const [selectUserData, setSelectUserData] = useState<ItMapData>();
+  const [selectUserData, setSelectUserData] = useState<ItMapData | boolean>(
+    false
+  );
   const { testData } = useData();
 
   const getUserNavData = (idx: number) => {
@@ -13,6 +15,7 @@ const useSelectShowCompany = () => {
   return {
     getUserNavData,
     selectUserData,
+    setSelectUserData,
   };
 };
 
