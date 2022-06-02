@@ -17,6 +17,7 @@ export const ShowUserListContainer = styled.button`
   padding: 10px;
   border: none;
   border-bottom: 1px solid #f4f4f4;
+  border-right: 1px solid #f4f4f4;
   background-color: #fff;
   text-align: left;
   flex-direction: column;
