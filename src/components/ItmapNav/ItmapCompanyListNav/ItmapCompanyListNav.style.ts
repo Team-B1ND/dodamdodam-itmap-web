@@ -33,7 +33,7 @@ export const UserCompanyNameContainer = styled.div`
   font-size: 1.05rem;
   margin-bottom: 4px;
   font-weight: bold;
-  color: blue;
+  color: blueviolet;
 `;
 
 export const UserCompanyLocationContainer = styled.div`
@@ -44,3 +44,64 @@ export const UserCompanyLocationContainer = styled.div`
 // export const UserCompanyNameContainer = styled.section`
 //   width: 100%;
 // `;
+
+export const CompanyInfoListWrapper = styled.div`
+  position: absolute;
+  top: 0px;
+  left: 15%;
+  min-width: 270px;
+  height: 100vh;
+  padding: 6px;
+  z-index: 2;
+  background-color: #fff;
+  flex-direction: column;
+`;
+
+export const CompanyInfoListContainerWrapper = styled.div`
+  width: 100%;
+  height: 60px;
+  background-color: #eee;
+  padding: 7px;
+  border-radius: 5px;
+`;
+
+export const CompanyInfoListContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const UserNameContainer = styled.div`
+  font-size: 1rem;
+  font-weight: bold;
+`;
+
+export const UserDevPosition = styled.div`
+  text-align: center;
+  background-color: pink;
+  border-radius: 5px;
+  span {
+    padding: 7px;
+  }
+`;
+
+export const CloseBtn = styled.div`
+  width: 10%;
+  height: 20px;
+  background-color: none;
+  text-align: center;
+  cursor: pointer;
+`;
+
+export const CloseBtnContainer = styled.div`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+`;
+
+export const Div = styled.div`
+  margin-top: 4px;
+  font-size: 0.7rem;
+`;

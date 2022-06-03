@@ -1,1 +1,1 @@
-export { default } from "./ItmapCompanyInfoNav";
+export { default } from "../ItmapCompanyListNav/ItmapCompanyListNav";
