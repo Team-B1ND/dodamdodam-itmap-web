@@ -14,11 +14,10 @@ export class MapSingleton {
   static instance: MapSingleton;
 
   public map: any;
-  public level: any;
   public Data: any;
+  public markerTemp = [] as any;
 
   public async initMap() {
-    let markerTemp = [] as any;
     const mapContainer = document.getElementById("map");
     let lat = 36.5;
     let lng = 127.5;
@@ -26,6 +25,17 @@ export class MapSingleton {
       center: new kakao.maps.LatLng(lat, lng),
       level: 12,
     };
+
+    const imageSrc = "",
+      imageSize = new kakao.maps.Size(64, 69),
+      imageOption = { offset: new kakao.maps.Point(27, 69) };
+
+    const markerImage = new kakao.maps.MarkerImage(
+      imageSrc,
+      imageSize,
+      imageOption
+    );
+
     const DATA = [
       {
         id: "1",
@@ -239,26 +249,51 @@ export class MapSingleton {
             let marker = new kakao.maps.Marker({
               map: this.map,
               position: coords,
+              // image: markerImage,
             });
 
-            markerTemp.push(marker);
+            this.markerTemp.push(marker);
 
-            const content = `<span style="backGround: #fff;">Hello</span>`;
+            const content = `<div style="
+            border-radius: 20px;
+            background-color: #0068c3;
+            padding:12px;
+            color: #fff;
+            
+            
+            
+            " 
+            class="markerOverlayContent">
+              ${item.companyName}
+              <div style="
+              position: absolute;
+              width: 15px;
+              height: 15px;
+            
+              background-color: #0068c3;
+              z-index: -1;
+              left: 50%;
+              transform: translate(-50%) rotate(45deg);
+              bottom: -5px;
+              "></div>
+              </div>
+            `;
 
             let overlay = new kakao.maps.CustomOverlay({
               content: content,
               map: this.map,
               position: marker.getPosition(),
-              yAnchor: 2.6,
+              yAnchor: 2.1,
             });
 
             kakao.maps.event.addListener(marker, "click", () => {
               overlay.setMap(this.map);
+              marker.getPosition().setCenter();
             });
 
             kakao.maps.event.addListener(this.map, "zoom_changed", () => {
-              this.level = this.map.getLevel();
-              if (this.level < 6) {
+              let level = this.map.getLevel();
+              if (level < 6) {
                 overlay.setMap(this.map);
               } else {
                 overlay.setMap(null);
@@ -269,24 +304,17 @@ export class MapSingleton {
           }
         }
       );
-      return markerTemp;
     });
-
-    const clusterer = new kakao.maps.MarkerClusterer({
-      map: this.map,
-      averageCenter: true,
-      minLevel: 5,
-      disableClickZoom: true,
-      calculator: [1, 3, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-    });
-
-    clusterer.addMarkers(markerTemp);
-
-    // kakao.maps.event.addListener(clusterer, "clusterclick", (cluster: any) => {
-    //   this.level = this.map.getLevel() - 3;
-
-    //   this.map.setLevel(this.level, { anchor: cluster.getCenter() });
+    // const clusterer = new kakao.maps.MarkerClusterer({
+    //   map: this.map,
+    //   averageCenter: true,
+    //   minLevel: 10,
+    //   disableClickZoom: true,
+    //   calculator: [1, 3, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
     // });
+    // console.log(this.markerTemp);
+
+    // clusterer.addMarkers(this.markerTemp);
   }
 
   static getInstance() {

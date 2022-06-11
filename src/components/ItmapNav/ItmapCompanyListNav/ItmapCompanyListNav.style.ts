@@ -14,7 +14,7 @@ export const NavContainer = styled.div`
 
 export const ShowUserListContainer = styled.button`
   width: 100%;
-  padding: 10px;
+  padding: 15px;
   border: none;
   border-bottom: 1px solid #f4f4f4;
   border-right: 1px solid #f4f4f4;
@@ -51,7 +51,7 @@ export const CompanyInfoListWrapper = styled.div`
   left: 15%;
   min-width: 270px;
   height: 100vh;
-  padding: 6px;
+  padding: 10px;
   z-index: 2;
   background-color: #fff;
   flex-direction: column;

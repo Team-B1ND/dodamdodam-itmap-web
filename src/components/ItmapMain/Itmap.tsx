@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import * as S from "./Itmap.style";
-import useItMapContainer from "../../hooks/useItMapContainer";
+import useItMapContainer from "../../hooks/useItMapContainer/useItMapContainer";
 import styled from "styled-components";
 
 
