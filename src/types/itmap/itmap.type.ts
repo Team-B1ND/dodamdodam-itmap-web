@@ -29,8 +29,6 @@ export type ItMapData = {
   isOpen: boolean;
 };
 
-export type ItMapDataProps = {
-  props: {
-    ItMapData: ItMapData;
-  };
+export type ItMapDataState = {
+  ItMapData: ItMapData;
 };

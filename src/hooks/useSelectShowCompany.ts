@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { ItMapData } from "types/itmap/itmap.type";
+import { ItMapData, ItMapDataState } from "types/itmap/itmap.type";
 import useData from "./useData";
 
 const useSelectShowCompany = () => {
