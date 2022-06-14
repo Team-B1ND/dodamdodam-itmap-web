@@ -1,1 +1,1 @@
-export { default } from "./Itmap";
+export { default } from "./ItmapMain";
