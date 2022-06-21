@@ -4,7 +4,8 @@ import styled from "styled-components";
 import useData from "hooks/useData";
 import { Map, ZoomControl, MapTypeControl, MapMarker } from "react-kakao-maps-sdk";
 import { useEffect, useState } from "react";
-
+import useMarker from "hooks/useMarker";
+import MapMarkerList from "components/MapMarkerList";
 
 
 declare global {
@@ -23,8 +24,7 @@ const Itmap = () => {
 
 
   const geocoder = new kakao.maps.services.Geocoder();
-
-
+  const [map, setMap] = useState<kakao.maps.Map | undefined>();
 
 
 
@@ -43,6 +43,8 @@ const Itmap = () => {
     status: number;
   }
 
+  const markers = useMarker(map);
+
   return (
     <MapWrapper>
       <Map
@@ -59,28 +61,11 @@ const Itmap = () => {
           height: "100%",
         }}
         level={12}
+        onCreate={setMap}
       >
-        {testData.map((item) => {
-          console.log(item);
-          let callback = (result: any, status: props) => {
-            if (status === kakao.maps.services.Status.OK) {
-              const newSearch = result[0];
-              setPosition({
-                lat: newSearch.y, lng: newSearch.x
-              })
-            }
-          };
-          geocoder.addressSearch(item.companyLocation, callback);
-
-          return (
-            <>
-              <MapMarker position={position} />
-            </>
-          )
-        })
-        }
-        <MapTypeControl position={kakao.maps.ControlPosition.TOPRIGHT} />
+        <MapMarkerList markers={markers}></MapMarkerList>
         <ZoomControl position={kakao.maps.ControlPosition.TOPRIGHT} />
+        <MapTypeControl position={kakao.maps.ControlPosition.TOPRIGHT} />
       </Map>
 
     </MapWrapper >
