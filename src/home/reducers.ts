@@ -15,7 +15,6 @@ const reducers = (state = initalState, action: any) => {
   switch (action.type) {
     case ISCOMPANYINUSERTOGGLE:
       return {
-        ...isCompanyInUserToggle,
         isCompanyInUserToggle: action.data,
       };
 

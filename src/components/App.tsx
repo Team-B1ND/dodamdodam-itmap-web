@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import MapContanier from "./ItmapMain/index";
-import NavContainer from "./ItmapNav/ItmapCompanyListNav/index";
 
 
 const App = () => {
+
   return (
     <AppSection>
-      <NavContainer />
       <MapContanier />
     </AppSection>
   );
