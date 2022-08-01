@@ -24,9 +24,7 @@ export type ItMapData = {
   explanation: string;
   companyName: string;
   companyLocation: string;
-  position: object;
   devPosition: string;
-  isOpen: boolean;
 };
 
 export type ItMapDataState = {
