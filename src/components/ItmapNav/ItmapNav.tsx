@@ -1,33 +1,45 @@
 import * as S from "./ItmapNav.style";
 import useData from "hooks/useData";
-import ItMapShowUserInfo from "./ItMapNavShowUserInfo";
-import CompanyInfoList from "./CompanyInfoList/index";
+import ItMapNavShowCompanyInfoList from "./ItMapNavShowCompanyInfoList";
+import ItMapNavShowUserInfo from "./ItMapNavShowUserInfo/ItMapNavShowUserInfo";
 import { useSelector } from "react-redux";
-import useSelectShowCompany from "hooks/useSelectShowCompany";
 import { useEffect, useState } from "react";
+import { FiSearch, FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import { ItMapData } from "types/itmap/itmap.type";
+
+
+interface isCompanyInUserToggleType {
+  isCompanyInUserToggle: boolean
+}
 
 const ItmapNav = () => {
   const { testData } = useData();
   const [isCompanyInUserInfo, setIsCompanyInUserInfo] = useState(false);
-  const state = useSelector((state: any) => {
+  const [isNavToggle, setIsNavToggle] = useState<boolean>(true);
+  const state = useSelector((state: isCompanyInUserToggleType) => {
     return state;
   });
 
   useEffect(() => {
-    setIsCompanyInUserInfo(state.isCompanyInUserToggle)
+    setIsCompanyInUserInfo(state.isCompanyInUserToggle);
   }, [state]);
 
   return (
-    <S.NavWrapper>
-      <>
-        <S.NavTitle>
+    <>
+      <S.NavWrapper isNavToggle={isNavToggle}>
+        <S.NavTitleContainer>
           <S.NavTitleMent>여기 선배 IT을 지도?</S.NavTitleMent>
-        </S.NavTitle>
+
+          <S.NavCompanySearchContainer>
+            <S.NavCompanySearchInput type="text" placeholder="회사 검색" />
+            <FiSearch id="fiSearch" />
+          </S.NavCompanySearchContainer>
+        </S.NavTitleContainer>
 
         <S.NavContainer>
           {testData.map((item, idx) => {
             return (
-              <ItMapShowUserInfo
+              <ItMapNavShowCompanyInfoList
                 companyLocation={item.companyLocation}
                 idx={idx}
                 companyName={item.companyName}
@@ -37,10 +49,19 @@ const ItmapNav = () => {
         </S.NavContainer>
         {
           isCompanyInUserInfo &&
-          <CompanyInfoList />
+          <ItMapNavShowUserInfo
+          />
         }
-      </>
-    </S.NavWrapper >
+      </S.NavWrapper >
+
+      <S.NavToggleBtnContainer isNavToggle={isNavToggle} isCompanyInUserInfo={isCompanyInUserInfo}>
+        <S.NavToggleBtn onClick={() =>
+          setIsNavToggle(!isNavToggle)
+        }>
+          {isNavToggle ? <FiChevronLeft /> : <FiChevronRight />}
+        </S.NavToggleBtn>
+      </S.NavToggleBtnContainer>
+    </>
   );
 };
 
