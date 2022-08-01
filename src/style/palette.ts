@@ -152,8 +152,8 @@ export const palette = {
   purple,
   indigo,
   random,
-  main: "#0067bc",
-  white: "#ffffff",
-  black: "#000000",
+  main: "#0067BC",
+  borderColor: "#c4c4c4",
   modalBackground: "rgba(30, 30, 30, 0.6)",
+  boxShadowColor: " 5px 0px 7px 0 rgb(0 0 0 / 15%)",
 };
