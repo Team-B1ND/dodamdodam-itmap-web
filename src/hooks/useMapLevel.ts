@@ -6,16 +6,16 @@ const useMapLevel = (map: kakao.maps.Map | undefined) => {
   useEffect(() => {
     if (!map) return;
 
-    function listener() {
+    const getCurrentMapLevel = () => {
       if (map) {
         setLevel(map.getLevel());
       }
-    }
+    };
 
-    kakao.maps.event.addListener(map, "zoom_changed", listener);
+    kakao.maps.event.addListener(map, "zoom_changed", getCurrentMapLevel);
 
     return () => {
-      kakao.maps.event.removeListener(map, "zoom_changed", listener);
+      kakao.maps.event.removeListener(map, "zoom_changed", getCurrentMapLevel);
     };
   }, [map]);
 
