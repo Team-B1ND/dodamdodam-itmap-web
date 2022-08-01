@@ -3,10 +3,10 @@ import useCompanyList from "./useData";
 
 const useMarker = (map: kakao.maps.Map | undefined) => {
   const [markerTemp, setMarkerTemp] = useState<any[]>([]);
+
   const { testData } = useCompanyList();
 
   useEffect(() => {
-    if (!(map && testData)) return;
     const gc = new kakao.maps.services.Geocoder();
 
     setMarkerTemp([]);
@@ -30,7 +30,7 @@ const useMarker = (map: kakao.maps.Map | undefined) => {
         }
       });
     });
-  }, [map, markerTemp, testData]);
+  }, []);
 
   return markerTemp;
 };

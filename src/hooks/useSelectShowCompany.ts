@@ -1,23 +1,18 @@
-import { useCallback, useEffect, useState } from "react";
-import { ItMapData, ItMapDataState } from "types/itmap/itmap.type";
+import { useCallback } from "react";
 import useData from "./useData";
 
 const useSelectShowCompany = () => {
-  const [selectUserData, setSelectUserData] = useState<ItMapData | null>();
-  const [isToggle, setIsToggle] = useState<boolean>(false);
   const { testData } = useData();
 
-  const getUserData = (idx: number) => {
-    setSelectUserData(testData[idx]);
-    setIsToggle(true);
-  };
+  const getUserData = useCallback(
+    (idx: number) => {
+      return testData[idx];
+    },
+    [testData]
+  );
 
   return {
     getUserData,
-    selectUserData,
-    setSelectUserData,
-    setIsToggle,
-    isToggle,
   };
 };
 
