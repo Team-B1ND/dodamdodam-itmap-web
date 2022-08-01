@@ -1,53 +1,66 @@
 import * as S from "./ItMapNavShowUserInfo.style";
-import useCoord from "hooks/useCoord";
-import { useMap } from "react-kakao-maps-sdk";
+import { useDispatch, useSelector } from "react-redux";
+import { FiX } from "react-icons/fi";
+import { isUserToggleAndUserIndex } from "store/reducers";
 import useSelectShowCompany from "hooks/useSelectShowCompany";
-import { useDispatch } from "react-redux";
-import { isCompanyInUserToggle } from "home/reducers";
+import { useEffect, useState } from "react";
+import { ItMapData } from "types/itmap/itmap.type";
 
-interface ItMapShowUserInfoProps {
-  companyLocation: string,
-  idx: number,
-  companyName: string,
+
+interface UserDataIndexType {
+  userDataIndex: number;
 }
 
-const ItMapShowUserInfo = ({
-  companyLocation,
-  idx,
-  companyName,
-}: ItMapShowUserInfoProps) => {
+const ItMapNavShowUserInfo = () => {
 
-  const map = useMap();
-
-
-  const [lat, lng] = useCoord(map, companyLocation);
-  const { getUserData } = useSelectShowCompany();
   const dispatch = useDispatch();
+  const { getUserData } = useSelectShowCompany();
+  const [userData, setUserData] = useState<ItMapData>();
 
+  const state = useSelector((s: UserDataIndexType) => {
+    return (s.userDataIndex)
+  });
 
-
-  const movePanTo = (lat: number, lng: number) => {
-    const moveCoord = new kakao.maps.LatLng(lat, lng);
-    map.panTo(moveCoord);
-    dispatch(isCompanyInUserToggle(true));
-  }
+  useEffect(() => {
+    return setUserData(getUserData(state));
+  }, [state])
 
   return (
-    <S.ShowUserListContainer key={idx} onClick={() => {
-      if (lat && lng) {
-        movePanTo(lat, lng);
-      }
-      getUserData(idx);
+    <S.ShowUserListContainer>
 
-    }}>
-      <S.UserCompanyNameContainer>
-        {companyName}
-      </S.UserCompanyNameContainer>
-      <S.UserCompanyLocationContainer>
-        {companyLocation}
-      </S.UserCompanyLocationContainer>
-    </S.ShowUserListContainer>
+      <S.CloseBtnContainer onClick={() => dispatch(isUserToggleAndUserIndex(false, 0))} >
+        <FiX />
+      </S.CloseBtnContainer>
+
+      <S.CompanyInfoListContainerWrapper>
+        <S.CompanyInfoListContainer>
+
+          {/* 자신의 이름 */}
+          <S.UserNameContainer>
+            {userData?.name}
+          </S.UserNameContainer>
+
+          {/* 자신의 개발 분야 */}
+          <S.UserDevPosition>
+            {userData?.devPosition}
+          </S.UserDevPosition>
+        </S.CompanyInfoListContainer>
+
+        <S.CompanyInfoListContainer>
+
+          {/* 간단한 소개 */}
+          <S.UserExplanation>
+            {userData?.explanation}
+          </S.UserExplanation>
+
+          <S.Generation>
+            {userData?.generation}기
+          </S.Generation>
+        </S.CompanyInfoListContainer>
+
+      </S.CompanyInfoListContainerWrapper >
+    </S.ShowUserListContainer >
   );
 };
 
-export default ItMapShowUserInfo;
+export default ItMapNavShowUserInfo;
