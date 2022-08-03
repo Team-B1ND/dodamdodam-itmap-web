@@ -15,6 +15,7 @@ declare global {
 const { kakao } = window;
 
 const Itmap = () => {
+
   const markers = useMarker();
 
   return (
