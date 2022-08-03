@@ -3,6 +3,7 @@ import useCoord from "hooks/useCoord";
 import { useMap } from "react-kakao-maps-sdk";
 import { useDispatch } from "react-redux";
 import { isUserToggleAndUserIndex } from "store/reducers";
+import usePanTo from "hooks/usePanTo";
 
 interface ItMapShowUserInfoProps {
   companyLocation: string,
@@ -16,24 +17,15 @@ const ItMapShowUserInfo = ({
   companyName,
 }: ItMapShowUserInfoProps) => {
 
-  const map = useMap();
-  const [lat, lng] = useCoord(map, companyLocation);
-  const dispatch = useDispatch();
 
 
 
-  const movePanTo = (lat: number, lng: number) => {
-    const moveCoord = new kakao.maps.LatLng(lat, lng);
-    map.setLevel(3);
-    map.panTo(moveCoord);
-    dispatch(isUserToggleAndUserIndex(true, idx));
-  }
+  const { movePanTo } = usePanTo(companyLocation, idx);
+
 
   return (
     <S.ShowCompanyInfoListContanier onClick={() => {
-      if (lat && lng) {
-        movePanTo(lat, lng);
-      }
+      movePanTo();
     }}>
       <S.UserCompanyNameContainer>
         {companyName}

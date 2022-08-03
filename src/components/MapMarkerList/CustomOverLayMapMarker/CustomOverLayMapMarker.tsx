@@ -4,6 +4,7 @@ import { isUserToggleAndUserIndex } from "store/reducers";
 import useCoord from "hooks/useCoord";
 import { useMap } from "react-kakao-maps-sdk";
 import { RiCommunityLine } from "react-icons/ri";
+import usePanTo from "hooks/usePanTo";
 
 interface props {
   companyName: string;
@@ -18,23 +19,11 @@ const CustomOverLayMapMarker = ({
 }: props) => {
 
 
-  const map = useMap();
-
-  const dispatch = useDispatch();
-
-  const [lat, lng] = useCoord(map, companyLocation);
-
-  const movePanTo = (lat: number, lng: number) => {
-    const moveCoord = new kakao.maps.LatLng(lat, lng);
-    map.panTo(moveCoord);
-    dispatch(isUserToggleAndUserIndex(true, idx));
-  }
+  const { movePanTo } = usePanTo(companyLocation, idx);
 
   return (
     <S.CustomOverlayContainar onClick={() => {
-      if (lat && lng) {
-        movePanTo(lat, lng);
-      }
+      movePanTo();
     }}>
 
       <RiCommunityLine style={{ "fontSize": "30px" }} />
