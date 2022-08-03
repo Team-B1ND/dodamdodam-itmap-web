@@ -5,20 +5,18 @@ import {
   MarkerClusterer,
   useMap,
 } from 'react-kakao-maps-sdk';
-import CustomOverLatMapMarker from "components/MapMarkerList/CustomOverLayMapMarker/index";
-import useSelectShowCompany from 'hooks/useSelectShowCompany';
-import useData from 'hooks/useData';
-import useCooder from 'hooks/useCoord';
+import CustomOverlayMapMarker from "components/MapMarkerList/CustomOverlayMapMarker/index";
 import { isUserToggleAndUserIndex } from 'store/reducers';
 import { useDispatch } from 'react-redux';
+import { ItMapData } from 'types/itmap/itmap.type';
 
-interface MarkerListComponentProps {
-  markers: any[];
+interface Props {
+  markers: ItMapData[];
 }
 
-const MarkerListComponent: React.FC<MarkerListComponentProps> = ({
+const MarkerListComponent = ({
   markers,
-}) => {
+}: Props) => {
   const map = useMap();
   const level = useMapLevel(map);
   const dispatch = useDispatch();
@@ -38,7 +36,7 @@ const MarkerListComponent: React.FC<MarkerListComponentProps> = ({
       averageCenter={true} // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
       minLevel={10} // 클러스터 할 최소 지도 레벨
     >
-      {markers.map((item, idx) => // 레벨이 3보다 작을 경우 마커가 있는 위치에 회사 정보를 보여준다
+      {markers.map((item, idx) => // 레벨이 4보다 작을 경우 customoverlay를 보여준다
         level > 4 ?
           (
             <MapMarker
@@ -53,9 +51,8 @@ const MarkerListComponent: React.FC<MarkerListComponentProps> = ({
               key={idx}
               position={item.position}
               yAnchor={1.4}
-
             >
-              <CustomOverLatMapMarker
+              <CustomOverlayMapMarker
                 companyName={item.companyName}
                 companyLocation={item.companyLocation}
                 idx={idx}

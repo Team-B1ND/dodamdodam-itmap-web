@@ -1,4 +1,4 @@
-import * as S from "./CustomOverLayMapMarker.style";
+import * as S from "./CustomOverlayMapMarker.style";
 import { useDispatch } from "react-redux";
 import { isUserToggleAndUserIndex } from "store/reducers";
 import useCoord from "hooks/useCoord";
@@ -23,7 +23,6 @@ const CustomOverLayMapMarker = ({
   const dispatch = useDispatch();
 
   const [lat, lng] = useCoord(map, companyLocation);
-
 
   const movePanTo = (lat: number, lng: number) => {
     const moveCoord = new kakao.maps.LatLng(lat, lng);

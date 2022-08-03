@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { ItMapData } from "types/itmap/itmap.type";
 import useCompanyList from "./useData";
 
-const useMarker = (map: kakao.maps.Map | undefined) => {
-  const [markerTemp, setMarkerTemp] = useState<any[]>([]);
+const useMarker = () => {
+  const [markerTemp, setMarkerTemp] = useState<ItMapData[]>([]);
 
   const { testData } = useCompanyList();
 
@@ -17,8 +18,8 @@ const useMarker = (map: kakao.maps.Map | undefined) => {
           const coords = {
             ...item,
             position: {
-              lat: result[0].y,
-              lng: result[0].x,
+              lat: Number(result[0].y),
+              lng: Number(result[0].x),
             },
           };
 

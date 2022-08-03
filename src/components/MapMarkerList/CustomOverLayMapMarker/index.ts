@@ -1,1 +1,1 @@
-export { default } from "./CustomOverLayMapMarker";
+export { default } from "./CustomOverlayMapMarker";

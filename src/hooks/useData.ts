@@ -1,7 +1,7 @@
 const useData = () => {
   const testData = [
     {
-      id: "1",
+      id: 1,
       name: "정우재",
       generation: "1",
       profileImg:
@@ -12,9 +12,10 @@ const useData = () => {
       companyName: "(주)북한 인민군",
       companyLocation: "경기도",
       devPosition: "FE",
+      position: { lat: 0, lng: 0 },
     },
     {
-      id: "2",
+      id: 2,
       name: "박병관",
       generation: "3",
       profileImg:
@@ -25,9 +26,10 @@ const useData = () => {
       companyName: "(주)태평양 하와이안",
       companyLocation: "대구",
       devPosition: "FE",
+      position: { lat: 0, lng: 0 },
     },
     {
-      id: "3",
+      id: 3,
       name: "임동현",
       generation: "5",
       profileImg:
@@ -38,9 +40,10 @@ const useData = () => {
       companyName: "원티드랩",
       companyLocation: "안양",
       devPosition: "FE",
+      position: { lat: 0, lng: 0 },
     },
     {
-      id: "4",
+      id: 4,
       name: "김상은",
       generation: "6",
       profileImg:
@@ -51,9 +54,10 @@ const useData = () => {
       companyName: "FLO",
       companyLocation: "서울",
       devPosition: "FE",
+      position: { lat: 0, lng: 0 },
     },
     {
-      id: "5",
+      id: 5,
       name: "기준",
       generation: "7",
       profileImg:
@@ -64,9 +68,10 @@ const useData = () => {
       companyName: "(주)페르소나",
       companyLocation: "울산",
       devPosition: "FE",
+      position: { lat: 0, lng: 0 },
     },
     {
-      id: "6",
+      id: 6,
       name: "금현호",
       generation: "6",
       profileImg:
@@ -77,9 +82,10 @@ const useData = () => {
       companyName: "Google",
       companyLocation: "강남",
       devPosition: "FE",
+      position: { lat: 0, lng: 0 },
     },
     {
-      id: "7",
+      id: 7,
       name: "정우재",
       generation: "4",
       profileImg:
@@ -90,9 +96,10 @@ const useData = () => {
       companyName: "(주)북한 인민군",
       companyLocation: "경기도 광주",
       devPosition: "FE",
+      position: { lat: 0, lng: 0 },
     },
     {
-      id: "8",
+      id: 8,
       name: "박병관",
       generation: "4",
       profileImg:
@@ -103,9 +110,10 @@ const useData = () => {
       companyName: "(주)태평양 하와이안",
       companyLocation: "제주도",
       devPosition: "FE",
+      position: { lat: 0, lng: 0 },
     },
     {
-      id: "9",
+      id: 9,
       name: "임동현",
       generation: "4",
       profileImg:
@@ -116,9 +124,10 @@ const useData = () => {
       companyName: "원티드랩",
       companyLocation: "포항",
       devPosition: "FE",
+      position: { lat: 0, lng: 0 },
     },
     {
-      id: "10",
+      id: 10,
       name: "김상은",
       generation: "4",
       profileImg:
@@ -129,9 +138,10 @@ const useData = () => {
       companyName: "FLO",
       companyLocation: "인천",
       devPosition: "FE",
+      position: { lat: 0, lng: 0 },
     },
     {
-      id: "11",
+      id: 11,
       name: "기준",
       generation: "4",
       profileImg:
@@ -142,9 +152,10 @@ const useData = () => {
       companyName: "(주)페르소나",
       companyLocation: "파주",
       devPosition: "FE",
+      position: { lat: 0, lng: 0 },
     },
     {
-      id: "12",
+      id: 12,
       name: "금현호",
       generation: "4",
       profileImg:
@@ -155,6 +166,7 @@ const useData = () => {
       companyName: "Google",
       companyLocation: "부산",
       devPosition: "FE",
+      position: { lat: 0, lng: 0 },
     },
   ];
 

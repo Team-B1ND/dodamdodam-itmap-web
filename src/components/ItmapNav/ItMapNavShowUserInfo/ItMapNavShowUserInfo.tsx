@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { ItMapData } from "types/itmap/itmap.type";
 
 
-interface UserDataIndexType {
+interface Props {
   userDataIndex: number;
 }
 
@@ -17,12 +17,12 @@ const ItMapNavShowUserInfo = () => {
   const { getUserData } = useSelectShowCompany();
   const [userData, setUserData] = useState<ItMapData>();
 
-  const state = useSelector((s: UserDataIndexType) => {
-    return (s.userDataIndex)
-  });
+  const state = useSelector((s: Props) => s.userDataIndex);
 
   useEffect(() => {
-    return setUserData(getUserData(state));
+    setUserData(getUserData(state));
+    console.log(state);
+
   }, [state])
 
   return (

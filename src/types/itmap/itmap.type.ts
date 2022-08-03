@@ -16,7 +16,7 @@ export type ItMapResponse = Response & {
 };
 
 export type ItMapData = {
-  id: string;
+  id: number;
   name: string;
   generation: string;
   profileImg: string;
@@ -25,8 +25,5 @@ export type ItMapData = {
   companyName: string;
   companyLocation: string;
   devPosition: string;
-};
-
-export type ItMapDataState = {
-  ItMapData: ItMapData;
+  position: { lat: number; lng: number };
 };

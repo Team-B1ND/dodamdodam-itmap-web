@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useMap } from "react-kakao-maps-sdk";
-import useData from "./useData";
 
 interface coordsProps {
   lat: number;

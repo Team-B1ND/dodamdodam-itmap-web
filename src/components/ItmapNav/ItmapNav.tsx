@@ -5,10 +5,9 @@ import ItMapNavShowUserInfo from "./ItMapNavShowUserInfo/ItMapNavShowUserInfo";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { FiSearch, FiChevronRight, FiChevronLeft } from "react-icons/fi";
-import { ItMapData } from "types/itmap/itmap.type";
 
 
-interface isCompanyInUserToggleType {
+interface Props {
   isCompanyInUserToggle: boolean
 }
 
@@ -16,9 +15,7 @@ const ItmapNav = () => {
   const { testData } = useData();
   const [isCompanyInUserInfo, setIsCompanyInUserInfo] = useState(false);
   const [isNavToggle, setIsNavToggle] = useState<boolean>(true);
-  const state = useSelector((state: isCompanyInUserToggleType) => {
-    return state;
-  });
+  const state = useSelector((state: Props) => state);
 
   useEffect(() => {
     setIsCompanyInUserInfo(state.isCompanyInUserToggle);
@@ -40,9 +37,10 @@ const ItmapNav = () => {
           {testData.map((item, idx) => {
             return (
               <ItMapNavShowCompanyInfoList
-                companyLocation={item.companyLocation}
                 idx={idx}
+                key={item.id}
                 companyName={item.companyName}
+                companyLocation={item.companyLocation}
               />
             )
           })}

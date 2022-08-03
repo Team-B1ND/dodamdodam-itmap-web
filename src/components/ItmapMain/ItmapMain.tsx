@@ -16,8 +16,7 @@ declare global {
 const { kakao } = window;
 
 const Itmap = () => {
-  const [map, setMap] = useState<kakao.maps.Map | undefined>();
-  const markers = useMarker(map);
+  const markers = useMarker();
 
   return (
     <>
@@ -33,9 +32,7 @@ const Itmap = () => {
           position: 'fixed',
           width: '100%',
           height: '100%',
-          right: '0px',
         }}
-        onCreate={setMap}
         level={12}
       >
         <NavContainer />

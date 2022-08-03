@@ -17,8 +17,6 @@ const ItMapShowUserInfo = ({
 }: ItMapShowUserInfoProps) => {
 
   const map = useMap();
-
-
   const [lat, lng] = useCoord(map, companyLocation);
   const dispatch = useDispatch();
 
@@ -35,7 +33,6 @@ const ItMapShowUserInfo = ({
     <S.ShowCompanyInfoListContanier onClick={() => {
       if (lat && lng) {
         movePanTo(lat, lng);
-
       }
     }}>
       <S.UserCompanyNameContainer>
