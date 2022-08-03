@@ -1,5 +1,4 @@
-import { Map, ZoomControl, MapTypeControl } from "react-kakao-maps-sdk";
-import { useState } from "react";
+import { Map, MapTypeControl } from "react-kakao-maps-sdk";
 import useMarker from "hooks/useMarker";
 import MapMarkerList from "components/MapMarkerList";
 import NavContainer from "components/ItmapNav/index";

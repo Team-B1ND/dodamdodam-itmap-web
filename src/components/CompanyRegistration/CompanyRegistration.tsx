@@ -1,28 +1,26 @@
 import * as S from "./CompanyRegistration.style";
 import { FiPlus } from "react-icons/fi";
-import { useEffect, useState } from "react";
 import { FiX } from "react-icons/fi";
 import DaumPostcode from "react-daum-postcode";
-import { UserNameContainer } from "components/ItmapNav/ItMapNavShowUserInfo/ItMapNavShowUserInfo.style";
+import useCompanyRegistration from "hooks/useCompanyRegistration";
 
-interface CompanyRegistrationDataType {
-  userName: string;
-  IntroduceMent: string;
-  devPosition: string;
-}
+
 
 
 const CompanyRegistration = () => {
 
-  const [isCompanyRegistrationToggleOpen, setIsCompanyRegistrationToggleOpen] = useState<boolean>(false);
-  const [isDaumPostOpen, setIsDaumPostOpen] = useState<boolean>(false);
-  const [daumSearchResultValue, setDaumSearchResultValue] = useState<string>("");
-  const [companyRegistrationData, setCompanyRegistrationData] = useState<CompanyRegistrationDataType>({
-    userName: "",
-    IntroduceMent: "",
-    devPosition: "",
-  })
 
+  const {
+    isCompanyRegistrationToggleOpen,
+    setIsCompanyRegistrationToggleOpen,
+    isDaumPostOpen,
+    setIsDaumPostOpen,
+    daumSearchResultValue,
+    setDaumSearchResultValue,
+    companyRegistrationData,
+    setCompanyRegistrationData,
+    onChange
+  } = useCompanyRegistration();
 
 
   return (
@@ -33,23 +31,33 @@ const CompanyRegistration = () => {
             <FiX id="modalCloseBtn" onClick={() => {
               setIsCompanyRegistrationToggleOpen(false);
               setIsDaumPostOpen(false);
-            }} />
-            <S.NameInput type="text" placeholder="사용자 이름" onChange={(e) => setCompanyRegistrationData({ ...companyRegistrationData, userName: e.target.value })} />
 
-            <S.UserIntroduceMent type="text" placeholder="소개 말 (ex: 항상 노력하는 개발자입니다)" onChange={(e) => setCompanyRegistrationData({ ...companyRegistrationData, IntroduceMent: e.target.value })} />
+            }} />
+            <S.NameInput type="text" name="userName" placeholder="사용자 이름" onChange={onChange} />
+
+            <S.UserIntroduceMent type="text" name="IntroduceMent" placeholder="소개 말 (ex: 항상 노력하는 개발자입니다)" onChange={onChange} />
 
             <S.CompanyNameInput type="text" placeholder="회사 이름" />
 
-            <S.DevPosition type="text" placeholder="자신의 분야" onChange={(e) => setCompanyRegistrationData({ ...companyRegistrationData, devPosition: e.target.value })} />
+            <S.DevPosition type="text" name="devPosition" placeholder="자신의 분야" onChange={onChange} />
 
 
             <S.CompanyAddressContainer>
               {/* 검색 결과가 div의 크기를 넘었을 때 처리해야함 */}
-              <S.CompanyAddressBox placeholder="회사 주소" >{daumSearchResultValue ? daumSearchResultValue : "현재 검색 결과가 없습니다"}</S.CompanyAddressBox>
-              <S.CompanyAddressSearch onClick={() => setIsDaumPostOpen(!isDaumPostOpen)} >{isDaumPostOpen ? "검색 창 닫기" : "주소 찾기"}</S.CompanyAddressSearch>
-            </S.CompanyAddressContainer>
-            <S.DaumPostSerchContanier>
+              <S.CompanyAddressBox placeholder="회사 주소" >
+                {daumSearchResultValue ? daumSearchResultValue : "현재 검색 결과가 없습니다"}
+              </S.CompanyAddressBox>
 
+              <S.CompanyAddressSearch onClick={() => {
+                setIsDaumPostOpen((prev) => !prev);
+                setDaumSearchResultValue("");
+              }} >
+                {isDaumPostOpen ? "검색 창 닫기" : "주소 찾기"}
+              </S.CompanyAddressSearch>
+
+            </S.CompanyAddressContainer>
+
+            <S.DaumPostSerchContanier>
               {
                 isDaumPostOpen &&
                 <DaumPostcode
@@ -63,7 +71,6 @@ const CompanyRegistration = () => {
             </S.DaumPostSerchContanier>
 
             <S.CompanyRegistrationSubmitBtnContainer>
-
               <S.CompanyRegistrationSubmitBtn>
                 등록하기
               </S.CompanyRegistrationSubmitBtn>
@@ -81,6 +88,7 @@ const CompanyRegistration = () => {
 
         <S.CompanyRegistrationBtn onClick={() => {
           setIsCompanyRegistrationToggleOpen(true);
+          setDaumSearchResultValue("");
         }}>
           <FiPlus />
         </S.CompanyRegistrationBtn>

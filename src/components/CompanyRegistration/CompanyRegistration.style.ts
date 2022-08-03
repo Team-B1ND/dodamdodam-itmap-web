@@ -49,11 +49,11 @@ export const CompanyRegistrationModalBackground = styled.div`
 `;
 
 export const CompanyRegistrationModal = styled.div`
+  width: 420px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 380px;
   background-color: white;
   padding: 25px;
   border-radius: 5px;
@@ -115,6 +115,7 @@ export const CompanyNameInput = styled.input`
 `;
 
 export const CompanyAddressBox = styled.div`
+  width: 65%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -136,7 +137,7 @@ export const CompanyAddressSearch = styled.button`
 `;
 
 export const DaumPostSerchContanier = styled.div`
-  width: calc(380px - 50px);
+  width: calc(418px - 50px);
 `;
 
 export const CompanyRegistrationSubmitBtnContainer = styled.div`
