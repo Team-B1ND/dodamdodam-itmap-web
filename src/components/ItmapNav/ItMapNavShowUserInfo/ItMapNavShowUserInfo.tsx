@@ -21,18 +21,18 @@ const ItMapNavShowUserInfo = () => {
 
   useEffect(() => {
     setUserData(getUserData(state));
-    console.log(state);
-
   }, [state])
 
   return (
     <S.ShowUserListContainer>
 
-      <S.CloseBtnContainer onClick={() => dispatch(isUserToggleAndUserIndex(false, 0))} >
+      <S.CloseBtnContainer onClick={() => dispatch(isUserToggleAndUserIndex(false, true, 0))} >
         <FiX />
       </S.CloseBtnContainer>
 
       <S.CompanyInfoListContainerWrapper>
+
+        <S.ProfileImg src={userData?.profileImg} alt="프로필 이미지" />
         <S.CompanyInfoListContainer>
 
           {/* 자신의 이름 */}
@@ -57,6 +57,7 @@ const ItMapNavShowUserInfo = () => {
             {userData?.generation}기
           </S.Generation>
         </S.CompanyInfoListContainer>
+
 
       </S.CompanyInfoListContainerWrapper >
     </S.ShowUserListContainer >

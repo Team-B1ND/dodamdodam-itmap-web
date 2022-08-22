@@ -1,28 +1,37 @@
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import logger from "redux-logger";
 
 const IS_USER_TOGGLE_AND_USER_INDEX = "ISUSERTOGGLEANDUSERINDEX";
 
-export const isUserToggleAndUserIndex = (isToggle: boolean, idx: number) => {
+export const isUserToggleAndUserIndex = (
+  isSubNavToggle: boolean,
+  isNavToggle: boolean,
+  idx: number
+) => {
   return {
     type: IS_USER_TOGGLE_AND_USER_INDEX,
-    data: isToggle,
+    subNav: isSubNavToggle,
+    nav: isNavToggle,
     index: idx,
   };
 };
 
 interface initalStateType {
-  isCompanyInUserToggle: boolean;
+  isSubNavToggle: boolean;
   userDataIndex: number;
+  isNavToggle: boolean;
 }
 
 interface actionType {
-  data: boolean;
+  subNav: boolean;
   index: number;
   type: string;
+  nav: boolean;
 }
 
 const initalState = {
-  isCompanyInUserToggle: false,
+  isSubNavToggle: false,
+  isNavToggle: true,
   userDataIndex: 0,
 };
 
@@ -30,8 +39,9 @@ const reducers = (state = initalState, action: actionType): initalStateType => {
   switch (action.type) {
     case IS_USER_TOGGLE_AND_USER_INDEX:
       return {
-        isCompanyInUserToggle: action.data,
+        isSubNavToggle: action.subNav,
         userDataIndex: action.index,
+        isNavToggle: action.nav,
       };
 
     default:
@@ -39,6 +49,6 @@ const reducers = (state = initalState, action: actionType): initalStateType => {
   }
 };
 
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(logger));
 
 export default store;
