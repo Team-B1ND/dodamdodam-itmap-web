@@ -1,9 +1,24 @@
 import React, { useState } from "react";
+import { arrayBuffer } from "stream/consumers";
+import { ItMapData } from "types/itmap/itmap.type";
+import useData from "./useData";
+
+type positionType = {
+  lat: number;
+  lng: number;
+};
 
 interface Props {
-  userName: string;
-  IntroduceMent: string;
+  id: number;
+  name: string;
+  explanation: string;
   devPosition: string;
+  generation: string;
+  profileImg: string;
+  tagImg: string;
+  companyName: string;
+  companyLocation: string;
+  position: positionType;
 }
 
 const useCompanyRegistration = () => {
@@ -14,11 +29,22 @@ const useCompanyRegistration = () => {
     useState<string>("");
   const [companyRegistrationData, setCompanyRegistrationData] = useState<Props>(
     {
-      userName: "",
-      IntroduceMent: "",
+      id: 0,
+      name: "",
+      explanation: "",
       devPosition: "",
+      generation: "",
+      profileImg: "",
+      tagImg: "",
+      companyName: "",
+      companyLocation: "",
+      position: {
+        lat: 0,
+        lng: 0,
+      },
     }
   );
+  const { testData } = useData();
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
