@@ -24,11 +24,15 @@ export const CompanyInfoListContainerWrapper = styled.div`
 
 export const CompanyInfoListContainer = styled.div`
   width: 100%;
+  margin-top: 5px;
   display: flex;
   justify-content: space-between;
 `;
 
 export const UserNameContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1rem;
   font-weight: bold;
 `;
@@ -38,10 +42,12 @@ export const UserDevPosition = styled.div`
   padding: 1px 3px;
   background-color: ${palette.lightBlue[200]};
   border-radius: 5px;
+  height: 25px;
 `;
 
 export const CloseBtnContainer = styled.div`
   width: 40px;
+  z-index: 10;
   height: 40px;
   font-size: 20px;
   cursor: pointer;
@@ -59,12 +65,16 @@ export const CloseBtnContainer = styled.div`
 `;
 
 export const UserExplanation = styled.div`
-  margin-top: 4px;
+  width: 90%;
   font-size: 0.7rem;
 `;
 
 export const Generation = styled.div`
-  margin-top: 4px;
   font-size: 0.7rem;
   padding: 0 3px;
+`;
+
+export const ProfileImg = styled.img`
+  width: 50px;
+  border-radius: 50%;
 `;

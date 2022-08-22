@@ -13,7 +13,7 @@ const usePanTo = (companyLocation: string, idx: number) => {
       const moveCoord = new kakao.maps.LatLng(lat, lng);
       map.setLevel(3);
       map.panTo(moveCoord);
-      dispatch(isUserToggleAndUserIndex(true, idx));
+      dispatch(isUserToggleAndUserIndex(true, true, idx));
     }
   };
   return { movePanTo };

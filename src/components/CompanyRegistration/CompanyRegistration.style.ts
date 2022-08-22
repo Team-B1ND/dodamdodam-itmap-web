@@ -91,7 +91,7 @@ export const CompanyAddressContainer = styled.div`
   align-items: center;
 `;
 
-export const UserIntroduceMent = styled.input`
+export const UserExplanationMentInput = styled.input`
   width: 100%;
   height: 30px;
   outline: none;
@@ -113,8 +113,10 @@ export const CompanyNameInput = styled.input`
     border: 1px solid ${palette.gray[500]};
   }
 `;
-
-export const CompanyAddressBox = styled.div`
+type Props = {
+  name?: string;
+};
+export const CompanyAddressBox = styled.div<Props>`
   width: 65%;
   height: 100%;
   display: flex;
@@ -155,7 +157,19 @@ export const CompanyRegistrationSubmitBtn = styled.button`
   background-color: ${palette.main};
 `;
 
-export const DevPosition = styled.input`
+export const DevPositionInput = styled.input`
+  width: 100%;
+  height: 30px;
+  outline: none;
+  margin-top: 20px;
+  padding-left: 10px;
+  border: 1px solid ${palette.gray[300]};
+  &:focus {
+    border: 1px solid ${palette.gray[500]};
+  }
+`;
+
+export const GenerationInput = styled.input`
   width: 100%;
   height: 30px;
   outline: none;

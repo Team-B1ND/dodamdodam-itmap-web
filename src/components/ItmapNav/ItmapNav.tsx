@@ -8,17 +8,19 @@ import { FiSearch, FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 
 interface Props {
-  isCompanyInUserToggle: boolean
+  isSubNavToggle: boolean;
+  isNavToggle: boolean;
 }
 
 const ItmapNav = () => {
   const { testData } = useData();
-  const [isCompanyInUserInfo, setIsCompanyInUserInfo] = useState(false);
-  const [isNavToggle, setIsNavToggle] = useState<boolean>(true);
+  const [isSubNavToggle, setIsSubNavToggle] = useState<boolean>(false); //전역 되있음
+  const [isNavToggle, setIsNavToggle] = useState<boolean>(true); //안되있음
   const state = useSelector((state: Props) => state);
 
   useEffect(() => {
-    setIsCompanyInUserInfo(state.isCompanyInUserToggle);
+    setIsSubNavToggle(state.isSubNavToggle);
+    setIsNavToggle(state.isNavToggle);
   }, [state]);
 
   return (
@@ -45,16 +47,22 @@ const ItmapNav = () => {
             )
           })}
         </S.NavContainer>
+
         {
-          isCompanyInUserInfo &&
+          isSubNavToggle &&
           <ItMapNavShowUserInfo
           />
         }
+
       </S.NavWrapper >
 
-      <S.NavToggleBtnContainer isNavToggle={isNavToggle} isCompanyInUserInfo={isCompanyInUserInfo}>
-        <S.NavToggleBtn onClick={() =>
+      <S.NavToggleBtnContainer isNavToggle={isNavToggle} isSubNavToggle={isSubNavToggle}>
+        <S.NavToggleBtn onClick={() => {
+          if (isNavToggle) {
+            setIsSubNavToggle(false);
+          }
           setIsNavToggle(!isNavToggle)
+        }
         }>
           {isNavToggle ? <FiChevronLeft /> : <FiChevronRight />}
         </S.NavToggleBtn>

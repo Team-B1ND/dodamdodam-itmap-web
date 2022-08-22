@@ -8,7 +8,7 @@ const useData = () => {
         "https://user-images.githubusercontent.com/48943501/127284705-696db588-a867-48b6-aeba-8c2cd28d7f2f.jpg",
       tagImg:
         "https://user-images.githubusercontent.com/48943501/127284435-aeeb1458-15ae-4dbf-bcff-7cbd28556a0c.jpg",
-      explanation: "안녕하세ㅐ요 저는 좀 모자랍니다",
+      explanation: "안녕하세요 정직하고 우직한 정우재 입니다",
       companyName: "(주)북한 인민군",
       companyLocation: "경기도",
       devPosition: "FE",
