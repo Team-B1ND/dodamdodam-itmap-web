@@ -7,10 +7,14 @@ export const NavWrapper = styled.div<{ isNavToggle: boolean }>`
   position: relative;
   top: 0px;
   left: ${({ isNavToggle }) => (isNavToggle ? 0 : -384)}px;
-  transition: 0.7s;
   z-index: 1;
   background-color: white;
   box-shadow: 3px 0px 10px 0 rgb(0 0 0 / 15%);
+  @media screen and (max-width: 500px) {
+    position: fixed;
+    top: 400px;
+    display: grid;
+  }
 `;
 
 export const NavContainer = styled.div`
@@ -41,6 +45,9 @@ export const NavTitleContainer = styled.div`
   height: 150px;
   padding: 15px;
   background-color: ${palette.main};
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const NavTitleMent = styled.div`
@@ -87,13 +94,15 @@ export const ProfileUpDate = styled.div`
 
 export const NavToggleBtnContainer = styled.div<{
   isNavToggle: boolean;
-  isCompanyInUserInfo: boolean;
+  isSubNavToggle: boolean;
 }>`
-  height: 100%;
   position: relative;
-  transition: ${({ isCompanyInUserInfo }) => (isCompanyInUserInfo ? 0 : 0.7)}s;
-  left: ${({ isNavToggle }) => (isNavToggle ? 0 : -384)}px;
-  z-index: ${({ isCompanyInUserInfo }) => (isCompanyInUserInfo ? 0 : 10)};
+  margin-top: calc((100vh / 2));
+  height: 20px;
+  left: ${({ isNavToggle, isSubNavToggle }) =>
+    isNavToggle ? (isSubNavToggle ? 270 : 0) : -384}px;
+  z-index: ${({ isSubNavToggle, isNavToggle }) =>
+    isSubNavToggle ? (isNavToggle ? 10 : 0) : 10};
   display: flex;
   align-items: center;
 `;
