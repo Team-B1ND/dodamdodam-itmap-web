@@ -1,5 +1,5 @@
 import * as S from "./ItMapNavShowCompanyInfoList.style";
-import useCoord from "hooks/useCoord";
+import useCoord from "hooks/companyCoords/useCoord";
 import { useMap } from "react-kakao-maps-sdk";
 import { useDispatch } from "react-redux";
 import { isUserToggleAndUserIndex } from "store/reducers";
@@ -17,11 +17,7 @@ const ItMapShowUserInfo = ({
   companyName,
 }: ItMapShowUserInfoProps) => {
 
-
-
-
   const { movePanTo } = usePanTo(companyLocation, idx);
-
 
   return (
     <S.ShowCompanyInfoListContanier onClick={() => {

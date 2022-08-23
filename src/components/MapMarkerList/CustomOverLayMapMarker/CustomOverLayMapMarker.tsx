@@ -1,8 +1,4 @@
 import * as S from "./CustomOverlayMapMarker.style";
-import { useDispatch } from "react-redux";
-import { isUserToggleAndUserIndex } from "store/reducers";
-import useCoord from "hooks/useCoord";
-import { useMap } from "react-kakao-maps-sdk";
 import { RiCommunityLine } from "react-icons/ri";
 import usePanTo from "hooks/usePanTo";
 
