@@ -1,5 +1,4 @@
-import { applyMiddleware, createStore } from "redux";
-import logger from "redux-logger";
+import { createStore } from "redux";
 
 const IS_USER_TOGGLE_AND_USER_INDEX = "ISUSERTOGGLEANDUSERINDEX";
 
@@ -49,6 +48,6 @@ const reducers = (state = initalState, action: actionType): initalStateType => {
   }
 };
 
-const store = createStore(reducers, applyMiddleware(logger));
+const store = createStore(reducers);
 
 export default store;

@@ -9,9 +9,6 @@ const useMarker = () => {
 
   useEffect(() => {
     const gc = new kakao.maps.services.Geocoder();
-
-    setMarkerTemp([]);
-
     testData.forEach((item) => {
       gc.addressSearch(item.companyLocation, (result, status) => {
         if (status === kakao.maps.services.Status.OK) {
