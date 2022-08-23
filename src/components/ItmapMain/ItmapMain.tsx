@@ -3,7 +3,8 @@ import useMarker from "hooks/useMarker";
 import MapMarkerList from "components/MapMarkerList";
 import NavContainer from "components/ItmapNav/index";
 import CompanyRegistration from "components/CompanyRegistration/index";
-
+import { useEffect } from "react";
+import itMapRepository from "repository/itmap.repository";
 
 
 declare global {
@@ -17,6 +18,10 @@ const { kakao } = window;
 const Itmap = () => {
 
   const markers = useMarker();
+
+  useEffect(() => {
+    itMapRepository.getItMapData();
+  }, [])
 
   return (
     <>
