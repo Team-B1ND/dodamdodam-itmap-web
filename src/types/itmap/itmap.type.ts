@@ -5,25 +5,28 @@ export type ItMapLatLng = {
   lng: number;
 };
 
-export type UserInItMap = {
+export type UserInfo = {
   address: string;
-  idx: number;
+  id: string;
   name: string;
+  position: {
+    lat: number;
+    lng: number;
+  };
 };
 
-export type ItMapResponse = Response & {
-  data: UserInItMap[];
-};
+export interface UserInfoResponse extends Response {
+  data: UserInfo[];
+}
 
 export type ItMapData = {
-  id: number;
+  companyPlaceId: string;
   name: string;
+  info: string;
+  field: string;
   generation: string;
-  profileImg: string;
-  tagImg: string;
-  explanation: string;
+  githubId: string;
   companyName: string;
-  companyLocation: string;
-  devPosition: string;
-  position: { lat: number; lng: number };
+  companyAddress: string;
+  pw: string;
 };
