@@ -6,7 +6,11 @@ class CompanyRepository {
     userData: userDataProps
   ): Promise<userDataPropsResponse> {
     const { data } = await customAxios.post("/itmap/user", userData);
-    console.log(data);
+    return data;
+  }
+
+  public async GetCompanyUserData(userId: string) {
+    const { data } = await customAxios.get(`/itmap/user/company/${userId}`);
     return data;
   }
 }
