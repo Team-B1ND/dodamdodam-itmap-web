@@ -24,7 +24,6 @@ const CompanyRegistration = () => {
 
   const { getCompanyInfo, companyInfo } = useCompanyInfo();
   const [companySearchValue, setCompanySearchValue] = useState<string>("");
-  const [isField, setIsField] = useState<boolean>(false);
 
 
   return (
@@ -57,18 +56,11 @@ const CompanyRegistration = () => {
 
             <S.UserInfoInput type="number" name="generation" placeholder="기수 (숫자만 입력해 주세요)" onChange={onChange} />
             <S.UserInfoSelect defaultValue="개발 분야" name="field" onChange={(e) => {
-              const { value } = e.target;
-              if (value === "ETC") {
-                setIsField(true);
-              } else {
-                setIsField(false);
-              }
-              setCompanyRegistrationData({ ...companyRegistrationData, field: value });
+              setCompanyRegistrationData({ ...companyRegistrationData, field: e.target.value });
             }}>
               {devPositionArray.map((item, idx) => { return <option key={idx} value={item}>{item}</option> })}
             </S.UserInfoSelect>
 
-            {isField && <S.UserInfoInput name="field" placeholder="기타 분야" onChange={onChange} />}
             <S.CompanyAddressContainer>
               <S.CompanyAddressBox placeholder="회사명" onChange={(e) => setCompanySearchValue(e.target.value)} />
 
