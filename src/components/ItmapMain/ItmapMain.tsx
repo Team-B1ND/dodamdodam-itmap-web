@@ -4,7 +4,6 @@ import MapMarkerList from "components/MapMarkerList";
 import NavContainer from "components/ItmapNav/index";
 import CompanyRegistration from "components/CompanyRegistration/index";
 
-
 declare global {
   interface Window {
     kakao: any;

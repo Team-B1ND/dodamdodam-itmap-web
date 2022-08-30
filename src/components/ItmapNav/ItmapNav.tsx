@@ -1,45 +1,27 @@
 import * as S from "./ItmapNav.style";
-import useUserData from "hooks/useCompanyData";
+import useCompanyData from "hooks/useCompanyData";
 import ItMapNavShowCompanyInfoList from "./ItMapNavShowCompanyInfoList";
 import ItMapNavShowUserInfo from "./ItMapNavShowUserInfo/ItMapNavShowUserInfo";
 import { useSelector } from "react-redux";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FiSearch, FiChevronRight, FiChevronLeft } from "react-icons/fi";
-import useMarker from "hooks/useMarker";
-import useSelectCompany from "hooks/useSelectCompany";
-import { selectCompanyResponse } from "types/company/company.type";
-import { useDispatch } from "react-redux";
-import { FiX } from "react-icons/fi";
-import { isUserToggleAndUserIndex } from "store/reducers";
-import useSelectShowCompany from "hooks/useSelectCompany";
 
 interface Props {
   isSubNavToggle: boolean;
   isNavToggle: boolean;
 }
 
-interface userInfoProps {
-  id: string;
-  name: string;
-  address: string;
-}
-
 const ItmapNav = () => {
   const [isSubNavToggle, setIsSubNavToggle] = useState<boolean>(false);
   const [isNavToggle, setIsNavToggle] = useState<boolean>(true);
   const state = useSelector((state: Props) => state);
-  const { getCompanyData, companyData } = useUserData();
-  const dispatch = useDispatch();
+  const { companyData } = useCompanyData();
 
 
-  useEffect(() => {
+  useMemo(() => {
     setIsSubNavToggle(state.isSubNavToggle);
     setIsNavToggle(state.isNavToggle);
   }, [state]);
-
-  useEffect(() => {
-    getCompanyData();
-  }, [])
 
   return (
     <>
@@ -54,8 +36,7 @@ const ItmapNav = () => {
         </S.NavTitleContainer>
 
         <S.NavContainer>
-          {/* <Suspense fallback={<p>사용자 정보 로딩중...</p>} > */}
-          {companyData.map((item: any, idx: number) => {
+          {companyData && companyData.map((item, idx: number) => {
             return (
               <ItMapNavShowCompanyInfoList
                 id={item.id}
@@ -65,7 +46,6 @@ const ItmapNav = () => {
               />
             )
           })}
-          {/* </Suspense> */}
         </S.NavContainer>
 
         {
