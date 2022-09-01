@@ -1,9 +1,9 @@
 import { useMap } from "react-kakao-maps-sdk";
 import { useDispatch } from "react-redux";
-import { isUserToggleAndUserIndex } from "store/reducers";
+import { nav } from "store/nav";
 import useCoord from "./companyCoords/useCoord";
 
-const usePanTo = (companyLocation: string, idx: number) => {
+const usePanTo = (companyLocation: string) => {
   const map = useMap();
   const dispatch = useDispatch();
   const [lat, lng] = useCoord(map, companyLocation);
@@ -11,10 +11,9 @@ const usePanTo = (companyLocation: string, idx: number) => {
   /** 클릭을 하면 화면이 마커로 부드럽게 이동해요! */
   const movePanTo = () => {
     if (lat && lng) {
-      const moveCoord = new kakao.maps.LatLng(lat, lng);
-      map.setLevel(3);
-      map.panTo(moveCoord);
-      dispatch(isUserToggleAndUserIndex(true, true, idx));
+      map.setLevel(4);
+      map.panTo(new kakao.maps.LatLng(lat, lng));
+      dispatch(nav({ isNavToggle: true, isSubNavToggle: true }));
     }
   };
   return { movePanTo };
