@@ -8,8 +8,6 @@ import useCompanyInfo from "hooks/companyRegistration/useConpanyInfo";
 const CompanyRegistration = () => {
 
 
-  // const DATE = new Date(); // 1년이 지날 때 마다 기수의 숫자가 자동적으로 늘어나게
-
   const {
     isCompanyRegistrationToggleOpen,
     setIsCompanyRegistrationToggleOpen,
@@ -54,12 +52,14 @@ const CompanyRegistration = () => {
             <S.UserInfoInput type="text" name="githubId" placeholder="Github Id" onChange={onChange} />
             <S.UserInfoInput type="text" name="info" placeholder="소개 말 (ex: 항상 노력하는 개발자입니다)" onChange={onChange} />
 
-            <S.UserInfoInput type="number" name="generation" placeholder="기수 (숫자만 입력해 주세요)" onChange={onChange} />
-            <S.UserInfoSelect defaultValue="개발 분야" name="field" onChange={(e) => {
-              setCompanyRegistrationData({ ...companyRegistrationData, field: e.target.value });
-            }}>
-              {devPositionArray.map((item, idx) => { return <option key={idx} value={item}>{item}</option> })}
-            </S.UserInfoSelect>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <S.UserInfoGeneration type="number" name="generation" placeholder="기수 (숫자만 입력해 주세요)" onChange={onChange} />
+              <S.UserInfoSelect defaultValue="개발 분야" name="field" onChange={(e) => {
+                setCompanyRegistrationData({ ...companyRegistrationData, field: e.target.value });
+              }}>
+                {devPositionArray.map((item, idx) => { return <option key={idx} value={item}>{item}</option> })}
+              </S.UserInfoSelect>
+            </div>
 
             <S.CompanyAddressContainer>
               <S.CompanyAddressBox placeholder="회사명" onChange={(e) => setCompanySearchValue(e.target.value)} />

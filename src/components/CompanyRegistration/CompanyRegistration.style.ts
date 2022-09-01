@@ -2,7 +2,7 @@ import { palette } from "style/palette";
 import styled from "styled-components";
 
 export const CompanyRegistrationContanier = styled.div`
-  width: 240px;
+  width: 220px;
   height: 50px;
   border-radius: 50px;
   position: fixed;
@@ -15,9 +15,9 @@ export const CompanyRegistrationContanier = styled.div`
 `;
 
 export const CompanyRegistrationMent = styled.div`
-  width: 176px;
+  width: 180px;
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
   font-weight: 600;
 `;
@@ -104,7 +104,19 @@ export const UserInfoInput = styled.input`
 `;
 
 export const UserInfoSelect = styled.select`
-  width: 100%;
+  width: 48%;
+  height: 30px;
+  outline: none;
+  margin-top: 20px;
+  padding-left: 10px;
+  border: 1px solid ${palette.gray[300]};
+  &:focus {
+    border: 1px solid ${palette.gray[500]};
+  }
+`;
+
+export const UserInfoGeneration = styled.input`
+  width: 48%;
   height: 30px;
   outline: none;
   margin-top: 20px;
@@ -134,10 +146,6 @@ export const CompanyAddressSearch = styled.button`
   color: white;
   cursor: pointer;
   background-color: ${palette.main};
-`;
-
-export const DaumPostSerchContanier = styled.div`
-  width: calc(418px - 50px);
 `;
 
 export const CompanyRegistrationSubmitBtnContainer = styled.div`
