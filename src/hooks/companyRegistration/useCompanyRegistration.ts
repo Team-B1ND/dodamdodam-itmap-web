@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import companyRepository from "repository/company/company.repository";
-import { userDataProps } from "types/user/userData.type";
+import { CompanyDataProps } from "types/user/userData.type";
+import useUserData from "hooks/useCompanyData";
 
 const useCompanyRegistration = () => {
   const [isCompanyRegistrationToggleOpen, setIsCompanyRegistrationToggleOpen] =
     useState<boolean>(false);
   const [isCompanySerach, setIsCompanySerach] = useState<boolean>(true);
   const [companyRegistrationData, setCompanyRegistrationData] =
-    useState<userDataProps>({
+    useState<CompanyDataProps>({
       companyPlaceId: "",
       name: "",
       info: "",
@@ -18,6 +19,8 @@ const useCompanyRegistration = () => {
       companyAddress: "",
       pw: "",
     });
+
+  const { companyData, setCompanyData } = useUserData();
 
   const devPositionArray: string[] = [
     "개발 분야",
@@ -41,11 +44,9 @@ const useCompanyRegistration = () => {
   const postUserData = async () => {
     // 등록할때 입력을 잘 입력했는지 걸러야함
     try {
-      const { data } = await companyRepository.PostCompanyRegistration(
+      const data = await companyRepository.PostCompanyRegistration(
         companyRegistrationData
       );
-
-      console.log(data);
     } catch (error) {
       window.alert("등록실패");
     }
