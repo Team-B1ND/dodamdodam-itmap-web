@@ -1,53 +1,16 @@
-import { createStore } from "redux";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { navReducer } from "./nav";
+import { userReducer } from "./user";
 
-const IS_USER_TOGGLE_AND_USER_INDEX = "ISUSERTOGGLEANDUSERINDEX";
+export const rootReducer = combineReducers({
+  nav: navReducer,
+  user: userReducer,
+});
 
-export const isUserToggleAndUserIndex = (
-  isSubNavToggle: boolean,
-  isNavToggle: boolean,
-  idx: number
-) => {
-  return {
-    type: IS_USER_TOGGLE_AND_USER_INDEX,
-    subNav: isSubNavToggle,
-    nav: isNavToggle,
-    index: idx,
-  };
-};
+export type RootState = ReturnType<typeof rootReducer>;
 
-interface initalStateType {
-  isSubNavToggle: boolean;
-  userDataIndex: number;
-  isNavToggle: boolean;
-}
-
-interface actionType {
-  subNav: boolean;
-  index: number;
-  type: string;
-  nav: boolean;
-}
-
-const initalState = {
-  isSubNavToggle: false,
-  isNavToggle: true,
-  userDataIndex: 0,
-};
-
-const reducers = (state = initalState, action: actionType): initalStateType => {
-  switch (action.type) {
-    case IS_USER_TOGGLE_AND_USER_INDEX:
-      return {
-        isSubNavToggle: action.subNav,
-        userDataIndex: action.index,
-        isNavToggle: action.nav,
-      };
-
-    default:
-      return state;
-  }
-};
-
-const store = createStore(reducers);
+const store = configureStore({
+  reducer: rootReducer,
+});
 
 export default store;
