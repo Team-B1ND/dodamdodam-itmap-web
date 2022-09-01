@@ -1,11 +1,9 @@
 import customAxios from "../lib/axios/customAxios";
-import { UserInfoResponse } from "../types/itmap/itmap.type";
+import { CompanyInfoListResponse } from "../types/user/userData.type";
 
 class itMapRepository {
-  public async getUserData(): Promise<UserInfoResponse> {
-    const { data } = await customAxios.get<UserInfoResponse>(
-      "/itmap/companies"
-    );
+  public async GetCompanyData(): Promise<CompanyInfoListResponse> {
+    const { data } = await customAxios.get("/itmap/companies");
     return data;
   }
 }
