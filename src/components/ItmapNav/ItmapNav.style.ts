@@ -2,10 +2,10 @@ import { palette } from "style/palette";
 import styled from "styled-components";
 
 export const NavWrapper = styled.div<{ isNavToggle: boolean }>`
-  width: 384px;
+  width: 350px;
   position: relative;
   top: 0px;
-  left: ${({ isNavToggle }) => (isNavToggle ? 0 : -384)}px;
+  left: ${({ isNavToggle }) => (isNavToggle ? 0 : -350)}px;
   z-index: 1;
   background-color: white;
   box-shadow: 3px 0px 10px 0 rgb(0 0 0 / 15%);
@@ -18,7 +18,7 @@ export const NavWrapper = styled.div<{ isNavToggle: boolean }>`
 
 export const NavContainer = styled.div`
   width: 100%;
-  height: calc(100% - 160px);
+  height: calc(100% - 75px);
   overflow: auto;
   text-align: center;
   padding-top: 30px;
@@ -26,18 +26,12 @@ export const NavContainer = styled.div`
 
   /* 스크롤 바 크기 */
   &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  /* 스크롤 꾸미기 */
-  &::-webkit-scrollbar-thumb {
-    background-color: ${palette.lightBlue[200]};
+    display: none;
   }
 `;
 
 export const NavTitleContainer = styled.div`
   width: 100%;
-  height: 150px;
   padding: 15px;
   background-color: ${palette.main};
   @media screen and (max-width: 500px) {
@@ -56,7 +50,6 @@ export const NavCompanySearchContainer = styled.div`
   height: 45px;
   display: flex;
   align-items: center;
-  margin-top: 40px;
   background-color: #fff;
   #fiSearch {
     width: 10%;
@@ -95,7 +88,7 @@ export const NavToggleBtnContainer = styled.div<{
   margin-top: calc((100vh / 2));
   height: 20px;
   left: ${({ isNavToggle, isSubNavToggle }) =>
-    isNavToggle ? (isSubNavToggle ? 270 : -1) : -384}px;
+    isNavToggle ? (isSubNavToggle ? 260 : -1) : -350}px;
   z-index: ${({ isSubNavToggle, isNavToggle }) =>
     isSubNavToggle ? (isNavToggle ? 10 : 0) : 10};
   display: flex;

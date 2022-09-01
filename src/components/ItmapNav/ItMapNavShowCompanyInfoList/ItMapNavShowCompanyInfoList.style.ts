@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ShowCompanyInfoListContanier = styled.button`
   width: 90%;
-  height: 20%;
+  height: 16%;
   border: none;
   margin-bottom: 25px;
   padding: 15px;
