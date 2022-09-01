@@ -3,28 +3,24 @@ import { RiCommunityLine } from "react-icons/ri";
 import usePanTo from "hooks/usePanTo";
 
 interface props {
-  companyName: string;
-  companyLocation: string;
-  idx: number;
+  name: string;
+  address: string;
 }
 
 const CustomOverLayMapMarker = ({
-  companyName,
-  companyLocation,
-  idx
+  name,
+  address,
 }: props) => {
 
-
-  const { movePanTo } = usePanTo(companyLocation, idx);
+  const { movePanTo } = usePanTo(address);
 
   return (
     <S.CustomOverlayContainar onClick={() => {
       movePanTo();
     }}>
-
       <RiCommunityLine style={{ "fontSize": "30px" }} />
       <S.UserCompanyNameContanier>
-        {companyName}
+        {name}
       </S.UserCompanyNameContanier>
       <S.BoxTail />
     </S.CustomOverlayContainar>

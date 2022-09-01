@@ -3,46 +3,51 @@ import styled from "styled-components";
 
 export const ShowUserListContainer = styled.div`
   position: absolute;
-  left: 384px;
+  left: 350px;
   top: 0px;
-  min-width: 270px;
   height: 100%;
+  min-width: 260px;
   padding: 10px;
   background-color: #fff;
   flex-direction: column;
   box-shadow: ${palette.boxShadowColor};
 `;
 
-export const CompanyInfoListContainerWrapper = styled.div`
-  width: 100%;
-  background-color: ${palette.main};
-  color: ${palette.gray[100]};
-  padding: 7px;
-  border-radius: 5px;
+export const UserInfoListContainerWrap = styled.div`
+  overflow: auto;
   margin-top: 100px;
+  display: grid;
+  gap: 30px;
 `;
 
 export const CompanyInfoListContainer = styled.div`
   width: 100%;
-  margin-top: 5px;
   display: flex;
   justify-content: space-between;
 `;
 
-export const UserNameContainer = styled.div`
+export const UserInfoWrapper = styled.div`
+  padding: 7px;
+  border-radius: 5px;
+  display: grid;
+  gap: 5px;
+  border: 1px solid ${palette.gray[200]};
+`;
+
+export const UserInfoImgAndNameWrap = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  gap: 10px;
+`;
+
+export const UserName = styled.div`
+  font-size: 0.95rem;
   font-weight: bold;
 `;
 
-export const UserDevPosition = styled.div`
-  text-align: center;
-  padding: 1px 3px;
-  background-color: ${palette.lightBlue[200]};
-  border-radius: 5px;
-  height: 25px;
+export const Userfield = styled.div`
+  font-size: 0.95rem;
+  font-weight: bold;
 `;
 
 export const CloseBtnContainer = styled.div`
@@ -57,7 +62,7 @@ export const CloseBtnContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: white;
-  transform: translate(260px, 70px);
+  transform: translate(250px, 70px);
   box-shadow: ${palette.boxShadowColor};
   &:hover {
     color: ${palette.main};
@@ -65,16 +70,16 @@ export const CloseBtnContainer = styled.div`
 `;
 
 export const UserExplanation = styled.div`
-  width: 90%;
   font-size: 0.7rem;
 `;
 
 export const Generation = styled.div`
   font-size: 0.7rem;
-  padding: 0 3px;
+  padding: 2px 2px;
+  /* padding: 3px 5px; */
 `;
 
 export const ProfileImg = styled.img`
   width: 50px;
-  border-radius: 50%;
+  border-radius: 30%;
 `;
