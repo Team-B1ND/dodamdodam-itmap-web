@@ -1,39 +1,43 @@
 import * as S from "./ItMapNavShowCompanyInfoList.style";
-import useCoord from "hooks/useCoord";
-import { useMap } from "react-kakao-maps-sdk";
-import { useDispatch } from "react-redux";
-import { isUserToggleAndUserIndex } from "store/reducers";
 import usePanTo from "hooks/usePanTo";
+import useSelectCompany from "hooks/useSelectCompany";
+import ItMapNavShowUserInfo from "../ItMapNavShowUserInfo";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 interface ItMapShowUserInfoProps {
-  companyLocation: string,
-  idx: number,
+  companyAddress: string,
+  id: string,
   companyName: string,
+}
+interface Props {
+  isSubNavToggle: boolean;
+  isNavToggle: boolean;
 }
 
 const ItMapShowUserInfo = ({
-  companyLocation,
-  idx,
+  companyAddress,
+  id,
   companyName,
 }: ItMapShowUserInfoProps) => {
 
-
-
-
-  const { movePanTo } = usePanTo(companyLocation, idx);
-
+  const { movePanTo } = usePanTo(companyAddress);
+  const { getUserData } = useSelectCompany();
 
   return (
-    <S.ShowCompanyInfoListContanier onClick={() => {
-      movePanTo();
-    }}>
-      <S.UserCompanyNameContainer>
-        {companyName}
-      </S.UserCompanyNameContainer>
-      <S.UserCompanyLocationContainer>
-        {companyLocation}
-      </S.UserCompanyLocationContainer>
-    </S.ShowCompanyInfoListContanier>
+    <>
+      <S.ShowCompanyInfoListContanier onClick={() => {
+        movePanTo();
+        getUserData(id);
+      }}>
+        <S.UserCompanyNameContainer>
+          {companyName}
+        </S.UserCompanyNameContainer>
+        <S.UserCompanyLocationContainer>
+          {companyAddress}
+        </S.UserCompanyLocationContainer>
+      </S.ShowCompanyInfoListContanier>
+    </>
   );
 };
 

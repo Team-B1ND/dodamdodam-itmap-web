@@ -18,6 +18,7 @@ const AppSection = styled.section`
 
   @media screen and (max-width: 500px) {
     flex-direction: column-reverse;
+    display: grid;
     width: 100%;
     height: 100%;
   }

@@ -1,64 +1,54 @@
 import * as S from "./ItMapNavShowUserInfo.style";
 import { useDispatch, useSelector } from "react-redux";
 import { FiX } from "react-icons/fi";
-import { isUserToggleAndUserIndex } from "store/reducers";
-import useSelectShowCompany from "hooks/useSelectShowCompany";
-import { useEffect, useState } from "react";
-import { ItMapData } from "types/itmap/itmap.type";
-
-
-interface Props {
-  userDataIndex: number;
-}
+import { UserInfoList } from "types/user/userData.type";
+import { nav } from "store/nav";
+import { RootState } from "store/reducers";
 
 const ItMapNavShowUserInfo = () => {
 
   const dispatch = useDispatch();
-  const { getUserData } = useSelectShowCompany();
-  const [userData, setUserData] = useState<ItMapData>();
-
-  const state = useSelector((s: Props) => s.userDataIndex);
-
-  useEffect(() => {
-    setUserData(getUserData(state));
-    console.log(state);
-
-  }, [state])
+  const { userData } = useSelector((state: RootState) => state.user);
 
   return (
     <S.ShowUserListContainer>
-
-      <S.CloseBtnContainer onClick={() => dispatch(isUserToggleAndUserIndex(false, 0))} >
+      <S.CloseBtnContainer onClick={() => dispatch(nav({ isNavToggle: true, isSubNavToggle: false }))} >
         <FiX />
       </S.CloseBtnContainer>
 
-      <S.CompanyInfoListContainerWrapper>
-        <S.CompanyInfoListContainer>
+      <S.UserInfoListContainerWrap>
+        {userData && userData.map((item: UserInfoList, idx: number) => {
+          return (
+            <S.UserInfoWrapper key={idx}>
 
-          {/* 자신의 이름 */}
-          <S.UserNameContainer>
-            {userData?.name}
-          </S.UserNameContainer>
+              <S.UserInfoImgAndNameWrap>
+                <S.ProfileImg src={item.image} alt="프로필 이미지" />
+                <div>
+                  <S.UserName>{item.name}</S.UserName>
 
-          {/* 자신의 개발 분야 */}
-          <S.UserDevPosition>
-            {userData?.devPosition}
-          </S.UserDevPosition>
-        </S.CompanyInfoListContainer>
+                  <S.Generation>
+                    {item.generation}기
+                  </S.Generation>
 
-        <S.CompanyInfoListContainer>
+                </div>
+              </S.UserInfoImgAndNameWrap>
 
-          {/* 간단한 소개 */}
-          <S.UserExplanation>
-            {userData?.explanation}
-          </S.UserExplanation>
+              <S.Userfield>
+                {item.field}
+              </S.Userfield>
 
-          <S.Generation>
-            {userData?.generation}기
-          </S.Generation>
-        </S.CompanyInfoListContainer>
 
-      </S.CompanyInfoListContainerWrapper >
+              <S.UserExplanation>
+                {item.info}
+              </S.UserExplanation>
+
+
+
+            </S.UserInfoWrapper >
+          )
+        })
+        }
+      </S.UserInfoListContainerWrap>
     </S.ShowUserListContainer >
   );
 };

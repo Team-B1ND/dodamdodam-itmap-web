@@ -2,17 +2,16 @@ import styled from "styled-components";
 
 export const ShowCompanyInfoListContanier = styled.button`
   width: 90%;
-  height: 150px;
-  margin-top: 25px;
-  padding: 15px;
-  border-radius: 5px;
+  height: 16%;
   border: none;
-  background-color: #fff;
+  margin-bottom: 25px;
+  padding: 15px;
   text-align: left;
   transition: 0.3s;
+  border-radius: 5px;
+  background-color: #fff;
   box-shadow: 0px 0px 20px 5px rgba(0 0 0 / 6%);
   cursor: pointer;
-  font-size: medium;
   &:hover {
     background-color: #f1f1f1;
   }

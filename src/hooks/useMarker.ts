@@ -1,19 +1,16 @@
-import { useEffect, useState } from "react";
-import { ItMapData } from "types/itmap/itmap.type";
-import useCompanyList from "./useData";
+import { useMemo, useState } from "react";
+import { CompanyInfoList } from "types/user/userData.type";
+import useCompanyData from "./useCompanyData";
 
 const useMarker = () => {
-  const [markerTemp, setMarkerTemp] = useState<ItMapData[]>([]);
+  const [markerTemp, setMarkerTemp] = useState<CompanyInfoList[]>([]); //회사들의 마커 위치 좌표를 저장할 배열
 
-  const { testData } = useCompanyList();
+  const { companyData } = useCompanyData(); //웹 페이지를 들어 오게 되면 서버에서 저장 되있는 회사 정보를 전달해 줌
 
-  useEffect(() => {
+  useMemo(() => {
     const gc = new kakao.maps.services.Geocoder();
-
-    setMarkerTemp([]);
-
-    testData.forEach((item) => {
-      gc.addressSearch(item.companyLocation, (result, status) => {
+    companyData.forEach((item: CompanyInfoList) => {
+      gc.addressSearch(item.address, (result, status) => {
         if (status === kakao.maps.services.Status.OK) {
           const coords = {
             ...item,
@@ -22,7 +19,6 @@ const useMarker = () => {
               lng: Number(result[0].x),
             },
           };
-
           if (markerTemp === []) {
             setMarkerTemp([coords]);
           } else {
@@ -31,7 +27,7 @@ const useMarker = () => {
         }
       });
     });
-  }, []);
+  }, [companyData]);
 
   return markerTemp;
 };

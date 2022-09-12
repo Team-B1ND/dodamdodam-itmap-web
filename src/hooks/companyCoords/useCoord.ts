@@ -12,7 +12,6 @@ const useCoord = (map: kakao.maps.Map | undefined, location: string) => {
     if (!map) return;
 
     const gc = new kakao.maps.services.Geocoder();
-
     gc.addressSearch(location, (result, status) => {
       if (status === kakao.maps.services.Status.OK) {
         setCoord({
