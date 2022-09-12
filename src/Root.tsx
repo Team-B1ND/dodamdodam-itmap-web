@@ -9,10 +9,11 @@ const Root = () => {
 
     return (
         <Provider store={store}>
-            {/* <StrictMode> */}
             <GlobalStyle />
-            <App />
-            {/* </StrictMode> */}
+
+            <StrictMode>
+                <App />
+            </StrictMode>
         </Provider>
     );
 };

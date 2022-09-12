@@ -24,14 +24,11 @@ const ItMapNavShowUserInfo = () => {
               <S.UserInfoImgAndNameWrap>
                 <S.ProfileImg src={item.image} alt="프로필 이미지" />
                 <div>
-                  {/* <div style={{ display: "flex" }}> */}
-
                   <S.UserName>{item.name}</S.UserName>
 
                   <S.Generation>
                     {item.generation}기
                   </S.Generation>
-                  {/* </div> */}
 
                 </div>
               </S.UserInfoImgAndNameWrap>
@@ -45,7 +42,6 @@ const ItMapNavShowUserInfo = () => {
                 {item.info}
               </S.UserExplanation>
 
-              {/* <p onClick={() => window.open(`https://github.com/${item.githubId}`)}>git</p> */}
 
 
             </S.UserInfoWrapper >

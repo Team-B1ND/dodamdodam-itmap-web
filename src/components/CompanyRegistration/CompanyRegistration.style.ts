@@ -167,7 +167,6 @@ export const CompanySelectContainer = styled.div`
   width: 100%;
   height: 330px;
   overflow: auto;
-  /* white-space: nowrap; */
   align-items: center;
   background-color: ${palette.gray[200]};
   &::-webkit-scrollbar-track {

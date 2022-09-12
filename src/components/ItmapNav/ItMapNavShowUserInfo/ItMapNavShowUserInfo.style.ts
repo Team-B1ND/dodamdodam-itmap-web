@@ -76,7 +76,6 @@ export const UserExplanation = styled.div`
 export const Generation = styled.div`
   font-size: 0.7rem;
   padding: 2px 2px;
-  /* padding: 3px 5px; */
 `;
 
 export const ProfileImg = styled.img`

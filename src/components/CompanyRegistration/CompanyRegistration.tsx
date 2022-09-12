@@ -67,7 +67,7 @@ const CompanyRegistration = () => {
               <S.CompanyAddressSearch
                 onClick={() => {
                   if (!companySearchValue) {
-                    alert("회사 이름 입력해 시빠려나");
+                    alert("회사 이름을 입력해 주세요");
                     return;
                   }
                   getCompanyInfo(companySearchValue);
