@@ -95,6 +95,7 @@ export const UserInfoInput = styled.input`
   width: 100%;
   height: 30px;
   outline: none;
+  font-size: 0.9rem;
   margin-top: 20px;
   padding-left: 10px;
   border: 1px solid ${palette.gray[300]};
@@ -107,6 +108,7 @@ export const UserInfoSelect = styled.select`
   width: 48%;
   height: 30px;
   outline: none;
+  font-size: 0.9rem;
   margin-top: 20px;
   padding-left: 10px;
   border: 1px solid ${palette.gray[300]};
@@ -121,6 +123,7 @@ export const UserInfoGeneration = styled.input`
   outline: none;
   margin-top: 20px;
   padding-left: 10px;
+  font-size: 0.9rem;
   border: 1px solid ${palette.gray[300]};
   &:focus {
     border: 1px solid ${palette.gray[500]};
@@ -131,6 +134,7 @@ export const CompanyAddressBox = styled.input`
   width: 65%;
   height: 100%;
   outline: none;
+  font-size: 0.9rem;
   padding-left: 10px;
   border: 1px solid ${palette.gray[300]};
   &:focus {
@@ -144,6 +148,8 @@ export const CompanyAddressSearch = styled.button`
   outline: none;
   border: none;
   color: white;
+  font-size: 0.9rem;
+
   cursor: pointer;
   background-color: ${palette.main};
 `;
@@ -152,13 +158,14 @@ export const CompanyRegistrationSubmitBtnContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 25px;
 `;
 
 export const CompanyRegistrationSubmitBtn = styled.button`
   border: none;
   color: white;
   padding: 12px;
+  font-size: 0.9rem;
   border-radius: 4px;
   background-color: ${palette.main};
 `;

@@ -1,43 +1,45 @@
 import * as S from "./ItMapNavShowCompanyInfoList.style";
 import usePanTo from "hooks/usePanTo";
 import useSelectCompany from "hooks/useSelectCompany";
-import ItMapNavShowUserInfo from "../ItMapNavShowUserInfo";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import useLogo from "hooks/useLogo";
+import basicImg from "assets/companyLogoImg/basics.png";
 
 interface ItMapShowUserInfoProps {
   companyAddress: string,
   id: string,
+  idx: number,
   companyName: string,
-}
-interface Props {
-  isSubNavToggle: boolean;
-  isNavToggle: boolean;
 }
 
 const ItMapShowUserInfo = ({
   companyAddress,
   id,
+  idx,
   companyName,
 }: ItMapShowUserInfoProps) => {
 
   const { movePanTo } = usePanTo(companyAddress);
   const { getUserData } = useSelectCompany();
+  const { logoLists } = useLogo();
 
   return (
-    <>
-      <S.ShowCompanyInfoListContanier onClick={() => {
-        movePanTo();
-        getUserData(id);
-      }}>
+    <S.ShowCompanyInfoListContanier onClick={() => {
+      movePanTo();
+      getUserData(id);
+      console.log(idx);
+    }}>
+
+      <S.CompanyDefaultLogo src={logoLists[idx] || basicImg} />
+
+      <div>
         <S.UserCompanyNameContainer>
           {companyName}
         </S.UserCompanyNameContainer>
         <S.UserCompanyLocationContainer>
           {companyAddress}
         </S.UserCompanyLocationContainer>
-      </S.ShowCompanyInfoListContanier>
-    </>
+      </div>
+    </S.ShowCompanyInfoListContanier>
   );
 };
 

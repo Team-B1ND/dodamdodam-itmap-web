@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 export const ShowCompanyInfoListContanier = styled.button`
   width: 90%;
-  height: 16%;
+  height: 15%;
   border: none;
-  margin-bottom: 25px;
-  padding: 15px;
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+  gap: 12px;
   text-align: left;
   transition: 0.3s;
   border-radius: 5px;
@@ -20,13 +22,21 @@ export const ShowCompanyInfoListContanier = styled.button`
   }
 `;
 
+export const CompanyDefaultLogo = styled.img`
+  width: 50px;
+  height: 50px;
+  font-size: 1.4rem;
+  padding: 6px;
+  object-fit: contain;
+`;
+
 export const UserCompanyNameContainer = styled.div`
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 4px;
   font-weight: bold;
 `;
 
 export const UserCompanyLocationContainer = styled.div`
-  font-size: 12px;
+  font-size: 0.9rem;
   margin-bottom: 4px;
 `;
