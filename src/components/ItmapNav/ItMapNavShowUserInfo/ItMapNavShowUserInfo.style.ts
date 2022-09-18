@@ -2,22 +2,27 @@ import { palette } from "style/palette";
 import styled from "styled-components";
 
 export const ShowUserListContainer = styled.div`
+  min-width: 330px;
+  height: 100%;
   position: absolute;
   left: 350px;
   top: 0px;
-  height: 100%;
-  min-width: 260px;
-  padding: 10px;
+  padding: 20px;
   background-color: #fff;
   flex-direction: column;
+  z-index: -2;
   box-shadow: ${palette.boxShadowColor};
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    left: 0px;
+  }
 `;
 
 export const UserInfoListContainerWrap = styled.div`
-  overflow: auto;
-  margin-top: 100px;
+  margin-top: 40px;
   display: grid;
   gap: 30px;
+  transition: 0.5s;
 `;
 
 export const CompanyInfoListContainer = styled.div`
@@ -41,12 +46,12 @@ export const UserInfoImgAndNameWrap = styled.div`
 `;
 
 export const UserName = styled.div`
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   font-weight: bold;
 `;
 
 export const Userfield = styled.div`
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   font-weight: bold;
 `;
 
@@ -59,10 +64,10 @@ export const CloseBtnContainer = styled.div`
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   background-color: white;
-  transform: translate(250px, 70px);
+  transform: translate(310px, 70px);
   box-shadow: ${palette.boxShadowColor};
   &:hover {
     color: ${palette.main};
@@ -70,15 +75,15 @@ export const CloseBtnContainer = styled.div`
 `;
 
 export const UserExplanation = styled.div`
-  font-size: 0.7rem;
+  font-size: 0.9rem;
 `;
 
 export const Generation = styled.div`
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   padding: 2px 2px;
 `;
 
 export const ProfileImg = styled.img`
-  width: 50px;
+  width: 70px;
   border-radius: 30%;
 `;

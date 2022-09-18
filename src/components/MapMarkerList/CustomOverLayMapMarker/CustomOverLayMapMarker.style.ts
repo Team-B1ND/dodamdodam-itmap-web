@@ -14,6 +14,8 @@ export const CustomOverlayContainar = styled.div`
 
 export const UserCompanyNameContanier = styled.div`
   padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
 `;
 
 export const BoxTail = styled.div`

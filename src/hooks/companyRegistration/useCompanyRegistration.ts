@@ -20,8 +20,6 @@ const useCompanyRegistration = () => {
       pw: "",
     });
 
-  const { companyData, setCompanyData } = useUserData();
-
   const devPositionArray: string[] = [
     "개발 분야",
     "FRONTEND",
@@ -44,9 +42,7 @@ const useCompanyRegistration = () => {
   const postUserData = async () => {
     // 등록할때 입력을 잘 입력했는지 걸러야함
     try {
-      const data = await companyRepository.PostCompanyRegistration(
-        companyRegistrationData
-      );
+      await companyRepository.PostCompanyRegistration(companyRegistrationData);
     } catch (error) {
       window.alert("등록실패");
     }

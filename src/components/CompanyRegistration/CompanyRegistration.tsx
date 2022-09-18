@@ -7,7 +7,6 @@ import useCompanyInfo from "hooks/companyRegistration/useConpanyInfo";
 
 const CompanyRegistration = () => {
 
-
   const {
     isCompanyRegistrationToggleOpen,
     setIsCompanyRegistrationToggleOpen,
@@ -15,7 +14,7 @@ const CompanyRegistration = () => {
     setCompanyRegistrationData,
     isCompanySerach,
     setIsCompanySerach,
-    devPositionArray, //나중에 map 돌리셈
+    devPositionArray,
     onChange,
     postUserData,
   } = useCompanyRegistration();
