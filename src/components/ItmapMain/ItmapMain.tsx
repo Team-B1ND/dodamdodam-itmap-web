@@ -27,7 +27,8 @@ const Itmap = () => {
         isPanto={true}
         style={{
           position: 'fixed',
-          width: '100%',
+          right: "0px",
+          width: 'calc(100% - 350px )',
           height: '100%',
         }}
         level={12}

@@ -27,7 +27,7 @@ const ItMapNavShowUserInfo = () => {
                   <S.UserName>{item.name}</S.UserName>
                   <S.Generation>
                     {item.generation}기
-                    <AiFillGithub />
+                    <AiFillGithub className="githubIcon" onClick={() => window.open(`https://github.com/${item.githubId}`)} />
                   </S.Generation>
                 </div>
               </S.UserInfoImgAndNameWrap>

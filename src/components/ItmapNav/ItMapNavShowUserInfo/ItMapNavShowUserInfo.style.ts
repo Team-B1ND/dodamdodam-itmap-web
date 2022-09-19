@@ -81,6 +81,9 @@ export const UserExplanation = styled.div`
 export const Generation = styled.div`
   font-size: 0.9rem;
   padding: 2px 2px;
+  .githubIcon {
+    cursor: pointer;
+  }
 `;
 
 export const ProfileImg = styled.img`

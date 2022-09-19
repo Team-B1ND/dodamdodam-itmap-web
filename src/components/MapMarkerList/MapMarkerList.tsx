@@ -32,7 +32,7 @@ const MarkerListComponent = ({
     map.setLevel(4);
     map.panTo(moveCoord);
     dispatch(nav({ isNavToggle: true, isSubNavToggle: true }));
-    getUserData(id)
+    getUserData(id);
   };
 
   return (
@@ -57,6 +57,7 @@ const MarkerListComponent = ({
               yAnchor={1.4}
             >
               <CustomOverlayMapMarker
+                idx={item.id}
                 name={item.name}
                 address={item.address}
               />
