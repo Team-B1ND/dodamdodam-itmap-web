@@ -8,7 +8,7 @@ export const NavWrapper = styled.div<{ isNavToggle: boolean }>`
   z-index: 1;
   background-color: white;
   box-shadow: 3px 0px 10px 0 rgb(0 0 0 / 15%);
-  transition: 0.3s;
+  transition: 0.4s;
   @media screen and (max-width: 500px) {
     width: 100%;
     position: fixed;
@@ -93,7 +93,7 @@ export const NavToggleBtnContainer = styled.div<{
   height: 20px;
   left: ${({ isNavToggle }) => (isNavToggle ? -1 : -350)}px;
   z-index: ${({ isSubNavToggle }) => (isSubNavToggle ? 0 : 1)};
-  transition: ${({ isSubNavToggle }) => (isSubNavToggle ? 0 : 0.3)}s;
+  transition: ${({ isSubNavToggle }) => (isSubNavToggle ? 0 : 0.4)}s;
   display: flex;
   align-items: center;
   @media screen and (max-width: 500px) {

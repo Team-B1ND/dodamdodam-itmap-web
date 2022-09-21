@@ -7,9 +7,9 @@ import {
 class CompanyRepository {
   public async PostCompanyRegistration(
     userData: CompanyDataProps
-  ): Promise<CompanyDataProps> {
-    const { data } = await customAxios.post("/itmap/user", userData);
-    return data;
+  ): Promise<number> {
+    const { status } = await customAxios.post("/itmap/user", userData);
+    return status;
   }
 
   public async GetCompanyUserData(

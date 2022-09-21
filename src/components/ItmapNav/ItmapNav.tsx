@@ -24,7 +24,7 @@ const ItmapNav = () => {
         </S.NavTitleContainer>
 
         <S.NavContainer>
-          {companyData && companyData.map((item, idx: number) => {
+          {companyData ? companyData.map((item, idx: number) => {
             return (
               <ItMapNavShowCompanyInfoList
                 id={item.id}
@@ -34,7 +34,7 @@ const ItmapNav = () => {
                 companyAddress={item.address}
               />
             )
-          })}
+          }) : <div>회사가 등록되어 있지 않습니다</div>}
         </S.NavContainer>
 
         {

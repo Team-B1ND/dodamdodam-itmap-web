@@ -9,7 +9,6 @@ const useLogo = () => {
     "https://static.toss.im/tds/favicon/favicon-196x196.png",
     GOOGLE,
     BANK_SAL,
-    null,
     MIDAS,
   ]);
   return { logoLists };

@@ -44,7 +44,7 @@ const useCompanyRegistration = () => {
     try {
       await companyRepository.PostCompanyRegistration(companyRegistrationData);
     } catch (error) {
-      window.alert("등록실패");
+      window.alert(error);
     }
   };
 

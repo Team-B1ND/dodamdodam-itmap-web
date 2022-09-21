@@ -26,7 +26,6 @@ const ItMapShowUserInfo = ({
     <S.ShowCompanyInfoListContanier onClick={() => {
       movePanTo();
       getUserData(id);
-      console.log(idx);
     }}>
 
       <S.CompanyDefaultLogo src={logoLists[idx] || basicImg} />

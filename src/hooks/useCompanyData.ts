@@ -12,7 +12,7 @@ const useCompanyData = () => {
         const { data } = await itmapRepository.GetCompanyData();
         setCompanyData(data);
       } catch (error) {
-        window.alert("오류...");
+        window.alert("회사 정보 가져오기가 실패했습니다.");
       }
     };
     getCompanyData();
