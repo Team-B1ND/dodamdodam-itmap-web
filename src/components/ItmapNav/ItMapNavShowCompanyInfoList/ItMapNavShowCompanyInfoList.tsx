@@ -6,7 +6,7 @@ import basicImg from "assets/companyLogoImg/basics.png";
 
 interface ItMapShowUserInfoProps {
   companyAddress: string,
-  id: string,
+  id: number,
   idx: number,
   companyName: string,
 }

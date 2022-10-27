@@ -1,10 +1,10 @@
 import { Map, MapTypeControl } from "react-kakao-maps-sdk";
-import useMarker from "hooks/useMarker";
 import MapMarkerList from "components/MapMarkerList";
 import NavContainer from "components/ItmapNav/index";
 import CompanyRegistration from "components/CompanyRegistration/index";
 import { useSelector } from "react-redux";
 import { RootState } from "store/reducers";
+import useCompanyData from "hooks/useCompanyData";
 
 declare global {
   interface Window {
@@ -15,8 +15,8 @@ declare global {
 const { kakao } = window;
 
 const Itmap = () => {
-  const markers = useMarker();
   const { isNavToggle } = useSelector((state: RootState) => state.nav);
+  const { companyData } = useCompanyData();
 
   return (
     <>
@@ -38,7 +38,7 @@ const Itmap = () => {
         level={12}
       >
         <NavContainer />
-        <MapMarkerList markers={markers} />
+        <MapMarkerList companyData={companyData} />
         <MapTypeControl position={kakao.maps.ControlPosition.TOPRIGHT} />
       </Map>
       <CompanyRegistration />

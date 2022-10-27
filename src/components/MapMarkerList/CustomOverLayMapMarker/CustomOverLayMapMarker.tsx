@@ -6,7 +6,7 @@ import useSelectCompany from "hooks/useSelectCompany";
 interface props {
   name: string;
   address: string;
-  idx: string;
+  idx: number;
 }
 
 const CustomOverLayMapMarker = ({

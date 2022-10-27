@@ -17,6 +17,7 @@ const ItMapNavShowUserInfo = () => {
       <S.CloseBtnContainer onClick={() => dispatch(nav({ isNavToggle: true, isSubNavToggle: false }))} >
         <FiX />
       </S.CloseBtnContainer>
+
       <S.UserInfoListContainerWrap>
         {userData && userData.map((item: UserInfoList, idx: number) => {
           return (

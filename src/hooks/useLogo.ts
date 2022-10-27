@@ -7,9 +7,9 @@ import MIDAS from "assets/companyLogoImg/midas_logo.png";
 const useLogo = () => {
   const [logoLists, setLogoLists] = useState([
     "https://static.toss.im/tds/favicon/favicon-196x196.png",
-    GOOGLE,
-    BANK_SAL,
     MIDAS,
+    // GOOGLE,
+    // BANK_SAL,
   ]);
   return { logoLists };
 };

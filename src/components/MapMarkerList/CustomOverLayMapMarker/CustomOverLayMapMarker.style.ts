@@ -10,6 +10,9 @@ export const CustomOverlayContainar = styled.div`
   color: white;
   padding: 12px;
   border-radius: 4px;
+  &:hover {
+    /* background-color: ${palette.gray[300]}; */
+  }
 `;
 
 export const UserCompanyNameContanier = styled.div`

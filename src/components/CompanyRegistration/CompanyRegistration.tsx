@@ -4,6 +4,7 @@ import { FiX } from "react-icons/fi";
 import useCompanyRegistration from "hooks/companyRegistration/useCompanyRegistration";
 import { useState } from "react";
 import useCompanyInfo from "hooks/companyRegistration/useConpanyInfo";
+import { devPositionArray } from "constants/devPosition/devPositionData.constants";
 
 const CompanyRegistration = () => {
 
@@ -14,7 +15,6 @@ const CompanyRegistration = () => {
     setCompanyRegistrationData,
     isCompanySerach,
     setIsCompanySerach,
-    devPositionArray,
     onChange,
     postUserData,
   } = useCompanyRegistration();
@@ -52,7 +52,7 @@ const CompanyRegistration = () => {
             <S.UserInfoInput type="text" name="info" placeholder="소개 말 (ex: 항상 노력하는 개발자입니다)" onChange={onChange} />
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <S.UserInfoGeneration type="number" name="generation" placeholder="기수 (숫자만 입력해 주세요)" onChange={onChange} />
+              <S.UserInfoGeneration type="number" placeholder="기수 (숫자만 입력해 주세요)" onChange={(e) => setCompanyRegistrationData({ ...companyRegistrationData, generation: Number(e.target.value) })} />
               <S.UserInfoSelect defaultValue="개발 분야" name="field" onChange={(e) => {
                 setCompanyRegistrationData({ ...companyRegistrationData, field: e.target.value });
               }}>
@@ -60,7 +60,9 @@ const CompanyRegistration = () => {
               </S.UserInfoSelect>
             </div>
 
-            <S.CompanyAddressContainer>
+            <S.CompanyAddressContainer onSubmit={(e) =>
+              e.preventDefault()
+            }>
               <S.CompanyAddressBox placeholder="회사명" onChange={(e) => setCompanySearchValue(e.target.value)} />
 
               <S.CompanyAddressSearch
@@ -86,10 +88,11 @@ const CompanyRegistration = () => {
                             ...companyRegistrationData,
                             companyPlaceId: item.id,
                             companyName: item.place_name,
-                            companyAddress: item.road_address_name
+                            companyAddress: item.address_name,
+                            companyLongitude: Number(item.x),
+                            companyLatitude: Number(item.y)
                           }
                         );
-                        setIsCompanySerach(false);
                       }} key={item.id}>
                         <S.CompanyAddressTitle>
                           <S.CompanyPlaceName>{item.place_name}</S.CompanyPlaceName>
@@ -104,7 +107,9 @@ const CompanyRegistration = () => {
                           <S.CompanyAddress>도로명</S.CompanyAddress>
                           <S.CompanyAddressName>{item.address_name}</S.CompanyAddressName>
                         </S.CompanyAddressTitle>
-                        <S.CompanyInFoPageMove onClick={() => window.open(item.place_url)}>더 보기</S.CompanyInFoPageMove>
+                        <S.CompanyInFoPageMove >
+                          <S.CompanyInFoPageMoveBtn onClick={() => window.open(item.place_url)}>더 보기</S.CompanyInFoPageMoveBtn>
+                        </S.CompanyInFoPageMove>
                       </S.CompanySelect>
                     )
                   })
@@ -116,6 +121,7 @@ const CompanyRegistration = () => {
               <S.CompanyRegistrationSubmitBtn onClick={() => {
                 setIsCompanyRegistrationToggleOpen(false);
                 postUserData();
+                setIsCompanySerach(false);
               }}>
                 등록하기
               </S.CompanyRegistrationSubmitBtn>

@@ -1,6 +1,11 @@
 import { palette } from "style/palette";
 import styled from "styled-components";
 
+export const DodamLogo = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
 export const NavWrapper = styled.div<{ isNavToggle: boolean }>`
   width: 350px;
   position: relative;
@@ -23,7 +28,7 @@ export const NavContainer = styled.div`
   height: calc(100% - 75px);
   display: flex;
   align-items: center;
-  flex-direction: column-reverse;
+  flex-direction: column;
   gap: 20px;
   overflow: auto;
   padding: 30px 0px;
@@ -36,6 +41,7 @@ export const NavContainer = styled.div`
 
 export const NavTitleContainer = styled.div`
   width: 100%;
+  height: 75px;
   padding: 15px;
   background-color: ${palette.main};
   @media screen and (max-width: 500px) {

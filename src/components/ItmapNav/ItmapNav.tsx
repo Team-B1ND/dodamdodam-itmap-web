@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { FiSearch, FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { nav } from "store/nav";
 import { RootState } from "store/reducers";
+import DODAM_LOGO from "assets/dodam_logo/logo.svg";
+
 
 const ItmapNav = () => {
   const { isNavToggle, isSubNavToggle } = useSelector((state: RootState) => state.nav);
@@ -16,11 +18,11 @@ const ItmapNav = () => {
     <>
       <S.NavWrapper isNavToggle={isNavToggle}>
         <S.NavTitleContainer>
-
-          <S.NavCompanySearchContainer>
+          {/* <S.NavCompanySearchContainer>
             <S.NavCompanySearchInput type="text" placeholder="회사 검색" />
             <FiSearch id="fiSearch" />
-          </S.NavCompanySearchContainer>
+          </S.NavCompanySearchContainer> */}
+          <S.DodamLogo src={DODAM_LOGO} alt="도담로고" />
         </S.NavTitleContainer>
 
         <S.NavContainer>

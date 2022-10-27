@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import companyRepository from "repository/company/company.repository";
 import { CompanyDataProps } from "types/user/userData.type";
-import useUserData from "hooks/useCompanyData";
 
 const useCompanyRegistration = () => {
   const [isCompanyRegistrationToggleOpen, setIsCompanyRegistrationToggleOpen] =
@@ -13,24 +12,14 @@ const useCompanyRegistration = () => {
       name: "",
       info: "",
       field: "",
-      generation: "",
+      generation: 0,
       githubId: "",
       companyName: "",
+      companyLatitude: 0,
+      companyLongitude: 0,
       companyAddress: "",
       pw: "",
     });
-
-  const devPositionArray: string[] = [
-    "개발 분야",
-    "FRONTEND",
-    "BACKEND",
-    "IOS",
-    "ANDROID",
-    "DEVOPS",
-    "AI",
-    "DB",
-    "ETC",
-  ];
 
   /** 사용자의 정보를 저장하는 함수에요! */
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +45,6 @@ const useCompanyRegistration = () => {
     companyRegistrationData,
     setCompanyRegistrationData,
     onChange,
-    devPositionArray,
     postUserData,
   };
 };

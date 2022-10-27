@@ -13,7 +13,7 @@ class CompanyRepository {
   }
 
   public async GetCompanyUserData(
-    userId: string
+    userId: number
   ): Promise<GetCompanyUserListResponse> {
     const { data } = await customAxios.get(`/itmap/user/company/${userId}`);
     return data;

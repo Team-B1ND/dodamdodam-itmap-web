@@ -5,7 +5,7 @@ import { user } from "store/user";
 
 const useSelectCompany = () => {
   const dispatch = useDispatch();
-  const getUserData = useCallback(async (id: string) => {
+  const getUserData = useCallback(async (id: number) => {
     try {
       const { data } = await companyRepository.GetCompanyUserData(id);
       dispatch(user(data));
