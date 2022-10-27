@@ -24,7 +24,7 @@ const MarkerListComponent = ({
       return;
     }
     const moveCoord = new kakao.maps.LatLng(lat, lng);
-    map.setLevel(4);
+    map.setLevel(3);
     map.panTo(moveCoord);
     dispatch(nav({ isNavToggle: true, isSubNavToggle: true }));
     getUserData(id);

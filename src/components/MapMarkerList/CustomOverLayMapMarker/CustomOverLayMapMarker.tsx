@@ -1,7 +1,7 @@
 import * as S from "./CustomOverlayMapMarker.style";
-import { RiCommunityLine } from "react-icons/ri";
 import usePanTo from "hooks/usePanTo";
 import useSelectCompany from "hooks/useSelectCompany";
+import COMPANY_IMAGE from "assets/companyLogoImg/basics.png";
 
 interface props {
   name: string;
@@ -23,7 +23,7 @@ const CustomOverLayMapMarker = ({
       movePanTo();
       getUserData(idx);
     }}>
-      <RiCommunityLine style={{ "fontSize": "30px" }} />
+      <img src={COMPANY_IMAGE} style={{ "width": "30px" }} alt="회사이미지" />
       <S.UserCompanyNameContanier>
         {name}
       </S.UserCompanyNameContanier>

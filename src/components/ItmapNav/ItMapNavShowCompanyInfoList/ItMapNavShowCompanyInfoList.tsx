@@ -2,7 +2,6 @@ import * as S from "./ItMapNavShowCompanyInfoList.style";
 import usePanTo from "hooks/usePanTo";
 import useSelectCompany from "hooks/useSelectCompany";
 import useLogo from "hooks/useLogo";
-import basicImg from "assets/companyLogoImg/basics.png";
 
 interface ItMapShowUserInfoProps {
   companyAddress: string,
@@ -28,7 +27,18 @@ const ItMapShowUserInfo = ({
       getUserData(id);
     }}>
 
-      <S.CompanyDefaultLogo src={logoLists[idx] || basicImg} />
+      {/* <S.CompanyDefaultLogo src={ || basicImg} /> */}
+
+      {
+        logoLists[idx]
+          ?
+          <S.CompanyLogo src={logoLists[idx]} alt="logo" />
+          :
+          //default 로고임
+          <S.TextLogo>
+            {companyName.split("").splice(0, 1)}
+          </S.TextLogo>
+      }
 
       <div>
         <S.UserCompanyNameContainer>

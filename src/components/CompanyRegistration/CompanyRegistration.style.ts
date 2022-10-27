@@ -167,6 +167,7 @@ export const CompanyRegistrationSubmitBtn = styled.button`
   padding: 12px;
   font-size: 0.9rem;
   border-radius: 4px;
+  cursor: pointer;
   background-color: ${palette.main};
 `;
 
@@ -174,7 +175,11 @@ export const CompanySelectContainer = styled.div`
   width: 100%;
   height: 330px;
   overflow: auto;
+  display: flex;
   align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
   background-color: ${palette.gray[200]};
   &::-webkit-scrollbar-track {
     background-color: none;
@@ -182,9 +187,8 @@ export const CompanySelectContainer = styled.div`
 `;
 
 export const CompanySelect = styled.button`
-  width: 350px;
+  width: 95%;
   padding: 10px;
-  margin: 10px 10px 0 10px;
   border: 2px solid ${palette.gray[400]};
   cursor: pointer;
   background-color: #fff;
