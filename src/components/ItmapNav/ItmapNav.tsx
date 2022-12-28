@@ -31,7 +31,8 @@ const ItmapNav = () => {
               <ItMapNavShowCompanyInfoList
                 id={item.id}
                 key={idx}
-                idx={idx}
+                textLogo={item.textLogo}
+                symbolLogo={item.symbolLogo}
                 companyName={item.name}
                 companyAddress={item.address}
               />

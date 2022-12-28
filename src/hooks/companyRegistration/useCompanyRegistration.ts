@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import companyRepository from "repository/company/company.repository";
 import { CompanyDataProps } from "types/user/userData.type";
 
@@ -31,9 +32,17 @@ const useCompanyRegistration = () => {
   const postUserData = async () => {
     // 등록할때 입력을 잘 입력했는지 걸러야함
     try {
-      await companyRepository.PostCompanyRegistration(companyRegistrationData);
+      const { status } = await companyRepository.PostCompanyRegistration(
+        companyRegistrationData
+      );
+
+      if (status === 200) {
+        toast.success("등록을 성공 하였습니다!");
+      }
     } catch (error) {
-      window.alert(error);
+      toast.error(
+        "오류가 났습니다 다시 해 주세요. (다시 해도 안된다면 관리자에게 문의하세요)"
+      );
     }
   };
 

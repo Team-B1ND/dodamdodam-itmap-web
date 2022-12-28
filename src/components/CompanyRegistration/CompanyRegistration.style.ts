@@ -69,19 +69,6 @@ export const CompanyRegistrationModal = styled.div`
   }
 `;
 
-export const NameInput = styled.input`
-  width: 100%;
-  height: 30px;
-  margin: 20px 0;
-  padding-left: 10px;
-  outline: none;
-  border: 1px solid ${palette.gray[300]};
-
-  &:focus {
-    border: 1px solid ${palette.gray[500]};
-  }
-`;
-
 export const CompanyAddressContainer = styled.form`
   width: 100%;
   height: 30px;

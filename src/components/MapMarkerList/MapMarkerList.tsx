@@ -1,4 +1,5 @@
 import useMapLevel from 'hooks/useMapLevel';
+import * as MapMarkerListStyle from "./MapMarkerList.style";
 import {
   CustomOverlayMap,
   MapMarker,
@@ -19,15 +20,12 @@ const MarkerListComponent = ({
   const dispatch = useDispatch()
   const { getUserData } = useSelectCompany();
 
-  const MoveMarker = (lat: number, lng: number, id: number) => {
-    if (!map) {
-      return;
-    }
+  const MoveMarker = (lat: number, lng: number, id: number, textLogo: string) => {
     const moveCoord = new kakao.maps.LatLng(lat, lng);
     map.setLevel(3);
     map.panTo(moveCoord);
     dispatch(nav({ isNavToggle: true, isSubNavToggle: true }));
-    getUserData(id);
+    getUserData(id, textLogo);
   };
 
   return (
@@ -44,11 +42,18 @@ const MarkerListComponent = ({
         return (
           level > 3 ?
             (
-              <MapMarker
+              <CustomOverlayMap
                 key={idx}
                 position={position}
-                onClick={() => MoveMarker(item.latitude, item.longitude, item.id)}
-              />
+              >
+                <MapMarkerListStyle.OneMarkerContainer
+                  onClick={() => MoveMarker(item.latitude, item.longitude, item.id, item.textLogo)}
+                >
+                  <MapMarkerListStyle.OneMarker>
+                    1
+                  </MapMarkerListStyle.OneMarker>
+                </MapMarkerListStyle.OneMarkerContainer>
+              </CustomOverlayMap>
             )
             :
             (
@@ -59,6 +64,7 @@ const MarkerListComponent = ({
               >
                 <CustomOverlayMapMarker
                   idx={item.id}
+                  textLogo={item.textLogo}
                   name={item.name}
                   address={item.address}
                 />

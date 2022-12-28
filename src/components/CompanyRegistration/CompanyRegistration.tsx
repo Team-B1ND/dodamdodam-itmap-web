@@ -47,7 +47,7 @@ const CompanyRegistration = () => {
             }} />
 
             <S.UserInfoInput type="text" name="name" placeholder="사용자 이름" onChange={onChange} />
-            <S.UserInfoInput type="text" name="pw" placeholder="비밀번호 (정보 수정할 때 필요해요!)" onChange={onChange} />
+            <S.UserInfoInput type="password" name="pw" placeholder="비밀번호 (정보 수정할 때 필요해요!)" onChange={onChange} />
             <S.UserInfoInput type="text" name="githubId" placeholder="Github Id" onChange={onChange} />
             <S.UserInfoInput type="text" name="info" placeholder="소개 말 (ex: 항상 노력하는 개발자입니다)" onChange={onChange} />
 

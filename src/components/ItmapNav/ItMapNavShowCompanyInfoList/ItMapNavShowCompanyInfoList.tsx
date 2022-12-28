@@ -1,43 +1,40 @@
 import * as S from "./ItMapNavShowCompanyInfoList.style";
 import usePanTo from "hooks/usePanTo";
 import useSelectCompany from "hooks/useSelectCompany";
-import useLogo from "hooks/useLogo";
+import DEFAULTIMAGE from "assets/companyLogoImg/NoImges.svg";
+import { useDispatch } from "react-redux";
+import { logo } from "store/Logo";
 
 interface ItMapShowUserInfoProps {
   companyAddress: string,
+  symbolLogo: string,
+  textLogo: string;
   id: number,
-  idx: number,
   companyName: string,
 }
 
 const ItMapShowUserInfo = ({
   companyAddress,
   id,
-  idx,
+  symbolLogo,
+  textLogo,
   companyName,
 }: ItMapShowUserInfoProps) => {
 
   const { movePanTo } = usePanTo(companyAddress);
   const { getUserData } = useSelectCompany();
-  const { logoLists } = useLogo();
 
   return (
     <S.ShowCompanyInfoListContanier onClick={() => {
       movePanTo();
-      getUserData(id);
+      getUserData(id, textLogo);
     }}>
-
-      {/* <S.CompanyDefaultLogo src={ || basicImg} /> */}
-
       {
-        logoLists[idx]
+        symbolLogo
           ?
-          <S.CompanyLogo src={logoLists[idx]} alt="logo" />
+          <S.CompanyLogo src={symbolLogo} alt="logo" />
           :
-          //default 로고임
-          <S.TextLogo>
-            {companyName.split("").splice(0, 1)}
-          </S.TextLogo>
+          <img src={DEFAULTIMAGE} alt="defaultimg" />
       }
 
       <div>

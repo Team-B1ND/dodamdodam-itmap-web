@@ -26,9 +26,8 @@ export const ShowCompanyInfoListContanier = styled.button`
 export const CompanyLogo = styled.img`
   width: 40px;
   height: 40px;
-  font-size: 1.4rem;
-  padding: 6px;
   object-fit: contain;
+  border-radius: 50%;
 `;
 
 export const TextLogo = styled.div`
@@ -42,14 +41,6 @@ export const TextLogo = styled.div`
   border: 1px solid ${palette.gray[600]};
   font-weight: bold;
 `;
-
-// export const CompanyDefaultLogo = styled.img`
-//   width: 50px;
-//   height: 50px;
-//   font-size: 1.4rem;
-//   padding: 6px;
-//   object-fit: contain;
-// `;
 
 export const UserCompanyNameContainer = styled.div`
   font-size: 1.15rem;

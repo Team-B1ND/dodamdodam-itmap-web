@@ -7,12 +7,14 @@ interface props {
   name: string;
   address: string;
   idx: number;
+  textLogo: string;
 }
 
 const CustomOverLayMapMarker = ({
   idx,
   name,
   address,
+  textLogo,
 }: props) => {
 
   const { movePanTo } = usePanTo(address);
@@ -21,8 +23,9 @@ const CustomOverLayMapMarker = ({
   return (
     <S.CustomOverlayContainar onClick={() => {
       movePanTo();
-      getUserData(idx);
+      getUserData(idx, textLogo);
     }}>
+
       <img src={COMPANY_IMAGE} style={{ "width": "30px" }} alt="회사이미지" />
       <S.UserCompanyNameContanier>
         {name}

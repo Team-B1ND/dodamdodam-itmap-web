@@ -15,6 +15,27 @@ export interface CompanyDataProps {
   companyAddress: string;
 }
 
+export interface UserInfoModifyProps {
+  currentPw: string;
+  field: string;
+  githubId: string;
+  info: string;
+  userId: number;
+}
+
+export interface UserInfoModifyResponse extends Response {
+  data: UserInfoModifyProps;
+}
+
+export interface UserInfoDeleteProps {
+  pw: string;
+  userId: number;
+}
+
+export interface UserInfoDeletePropsResponse extends Response {
+  data: UserInfoDeleteProps;
+}
+
 export interface CompanyInfoList {
   //회사 전체 조회
   address: string;
@@ -39,6 +60,7 @@ export interface UserInfoList {
   image: string;
   info: string;
   name: string;
+  isModifyid: boolean;
 }
 
 export interface GetCompanyUserListResponse extends Response {

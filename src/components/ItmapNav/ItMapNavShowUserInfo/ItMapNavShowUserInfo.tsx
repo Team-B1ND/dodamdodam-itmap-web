@@ -1,52 +1,90 @@
-import * as S from "./ItMapNavShowUserInfo.style";
+import * as NavShowUserInfoStyle from "./ItMapNavShowUserInfo.style";
 import { useDispatch, useSelector } from "react-redux";
 import { FiX } from "react-icons/fi";
+import { AiFillGithub } from "react-icons/ai";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import { UserInfoList } from "types/user/userData.type";
 import { nav } from "store/nav";
 import { RootState } from "store/reducers";
-import { AiFillGithub } from "react-icons/ai";
+import { modifyModalState } from "store/modifyModal";
+import { useState } from "react";
+import { deleteModalState } from "store/deleteModal";
 
 const ItMapNavShowUserInfo = () => {
 
+  const [isModifyid, setIsModifyid] = useState<string>("");
   const dispatch = useDispatch();
-  const { userData } = useSelector((state: RootState) => state.user);
+  const { user, logo } = useSelector((state: RootState) => state);
 
   return (
-    <S.ShowUserListContainer>
-
-      <S.CloseBtnContainer onClick={() => dispatch(nav({ isNavToggle: true, isSubNavToggle: false }))} >
+    <NavShowUserInfoStyle.ShowUserListContainer>
+      {logo.textLogo ?
+        <NavShowUserInfoStyle.TextLogoContainer>
+          <NavShowUserInfoStyle.TextLogo src={logo.textLogo} alt="textLogo" />
+        </NavShowUserInfoStyle.TextLogoContainer>
+        :
+        <NavShowUserInfoStyle.NullTextLogo />
+      }
+      <NavShowUserInfoStyle.CloseBtnContainer onClick={() => dispatch(nav({ isNavToggle: true, isSubNavToggle: false }))} >
         <FiX />
-      </S.CloseBtnContainer>
+      </NavShowUserInfoStyle.CloseBtnContainer>
 
-      <S.UserInfoListContainerWrap>
-        {userData && userData.map((item: UserInfoList, idx: number) => {
+      <NavShowUserInfoStyle.UserInfoListContainerWrap>
+        {user.userData && user.userData.map((item: UserInfoList, idx: number) => {
+
           return (
-            <S.UserInfoWrapper key={idx}>
-              <S.UserInfoImgAndNameWrap>
-                <S.ProfileImg src={item.image} alt="프로필 이미지" />
-                <div>
-                  <S.UserName>{item.name}</S.UserName>
-                  <S.Generation>
+            <NavShowUserInfoStyle.UserInfoWrapper key={idx}>
+
+              <NavShowUserInfoStyle.UserInfoImgAndNameWrap>
+                <NavShowUserInfoStyle.ProfileImg src={item.image} alt="프로필" />
+                <NavShowUserInfoStyle.DetailInfo>
+                  <NavShowUserInfoStyle.UserName>
+                    {item.name}
+                  </NavShowUserInfoStyle.UserName>
+                  <NavShowUserInfoStyle.Generation>
                     {item.generation}기
-                    <AiFillGithub className="githubIcon" onClick={() => window.open(`https://github.com/${item.githubId}`)} />
-                  </S.Generation>
-                </div>
-              </S.UserInfoImgAndNameWrap>
+                  </NavShowUserInfoStyle.Generation>
+                  <AiFillGithub className="githubIcon" onClick={() => window.open(`https://github.com/${item.githubId}`)} />
+                </NavShowUserInfoStyle.DetailInfo>
 
-              <S.Userfield>
+                <NavShowUserInfoStyle.ModifyContainer>
+                  <BsThreeDotsVertical onClick={() => {
+                    setIsModifyid(item.id)
+                  }} />
+                </NavShowUserInfoStyle.ModifyContainer>
+
+                {isModifyid === item.id &&
+                  <NavShowUserInfoStyle.ModifyModal>
+                    <NavShowUserInfoStyle.ModifyBtn
+                      onClick={() => {
+                        dispatch(modifyModalState({ ModifyModal: true, UserId: item.id }));
+                        setIsModifyid("");
+                      }} >
+                      수정하기
+                    </NavShowUserInfoStyle.ModifyBtn>
+                    <NavShowUserInfoStyle.ModifyBtn onClick={() => {
+                      dispatch(deleteModalState({ DeleteModal: true, UserId: item.id }));
+                      setIsModifyid("");
+                    }}>
+                      삭제하기
+                    </NavShowUserInfoStyle.ModifyBtn>
+                  </NavShowUserInfoStyle.ModifyModal>
+                }
+
+              </NavShowUserInfoStyle.UserInfoImgAndNameWrap>
+              <NavShowUserInfoStyle.Userfield>
                 {item.field}
-              </S.Userfield>
-
-              <S.UserExplanation>
+              </NavShowUserInfoStyle.Userfield>
+              <NavShowUserInfoStyle.UserExplanation>
                 {item.info}
-              </S.UserExplanation>
-
-            </S.UserInfoWrapper >
+              </NavShowUserInfoStyle.UserExplanation>
+            </NavShowUserInfoStyle.UserInfoWrapper >
           )
         })
         }
-      </S.UserInfoListContainerWrap>
-    </S.ShowUserListContainer >
+      </NavShowUserInfoStyle.UserInfoListContainerWrap>
+
+    </NavShowUserInfoStyle.ShowUserListContainer >
   );
 };
 

@@ -7,5 +7,9 @@ export const devPositionArray: string[] = [
   "DEVOPS",
   "AI",
   "DB",
+  "MOBILE",
+  "WINDOW",
+  "GAME",
+  "EMBEDDED",
   "ETC",
 ];

@@ -10,9 +10,14 @@ export const CustomOverlayContainar = styled.div`
   color: white;
   padding: 12px;
   border-radius: 4px;
-  &:hover {
-    /* background-color: ${palette.gray[300]}; */
-  }
+`;
+
+export const CompanyLogo = styled.img`
+  width: 40px;
+  height: 40px;
+  font-size: 1.4rem;
+  padding: 6px;
+  object-fit: contain;
 `;
 
 export const UserCompanyNameContanier = styled.div`
