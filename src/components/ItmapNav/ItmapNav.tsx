@@ -43,7 +43,6 @@ const ItmapNav = () => {
         {
           isSubNavToggle &&
           <ItMapNavShowUserInfo />
-
         }
 
       </S.NavWrapper >

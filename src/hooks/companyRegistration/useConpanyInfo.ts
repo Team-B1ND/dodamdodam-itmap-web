@@ -12,7 +12,8 @@ const useCompanyInfo = () => {
       if (status === kakao.maps.services.Status.OK || data.length > 0) {
         setCompanyInfo(data);
       } else {
-        // toast
+        // toast.error("");
+        
       }
     });
   };

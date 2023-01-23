@@ -10,7 +10,10 @@ class UserRepository {
   public async PutUserInfoModify(
     userModifyInfoData: UserInfoModifyProps
   ): Promise<UserInfoModifyResponse> {
-    const { data } = await customAxios.put("/itmap/user", userModifyInfoData);
+    const { data } = await customAxios.put("/itmap/user", {
+      data: userModifyInfoData,
+    });
+    console.log(data);
     return data;
   }
 
@@ -20,6 +23,7 @@ class UserRepository {
     const { data } = await customAxios.delete("/itmap/user", {
       data: userDeleteInfoData,
     });
+
     return data;
   }
 }

@@ -10,12 +10,12 @@ const Root = () => {
     const queryClient = new QueryClient();
 
     return (
-        <Provider store={store}>
-            <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={queryClient}>
+            <Provider store={store}>
                 <GlobalStyle />
                 <App />
-            </QueryClientProvider>
-        </Provider>
+            </Provider>
+        </QueryClientProvider>
     );
 };
 

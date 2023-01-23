@@ -7,6 +7,7 @@ import { RootState } from "store/reducers";
 import useCompanyData from "hooks/useCompanyData";
 import UserInfoModifyModal from "components/UserInfoModifyModal";
 import UserInfoDeleteModal from "components/UserInfoDeleteModal";
+import { ToastContainer } from "react-toastify";
 
 declare global {
   interface Window {
@@ -45,6 +46,7 @@ const Itmap = () => {
         <NavContainer />
         <MapMarkerList companyData={companyData} />
         <MapTypeControl position={kakao.maps.ControlPosition.TOPRIGHT} />
+        <ToastContainer />
       </Map>
       <CompanyRegistration />
     </>

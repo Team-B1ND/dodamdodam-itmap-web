@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { UserInfoModifyProps } from "types/user/userData.type";
 import { toast } from "react-toastify";
-import userInfoModifyRepository from "repository/user/user.repository";
+import UserRepository from "repository/user/user.repository";
 
 const useUserInfoModify = () => {
   const [userModifyData, setUserModifyData] = useState<UserInfoModifyProps>({
@@ -20,9 +20,7 @@ const useUserInfoModify = () => {
 
   const putModifyUserInfo = async () => {
     try {
-      const { status } = await userInfoModifyRepository.PutUserInfoModify(
-        userModifyData
-      );
+      const { status } = await UserRepository.PutUserInfoModify(userModifyData);
 
       if (status === 200) {
         toast.success("정보를 수정 하였습니다.");
