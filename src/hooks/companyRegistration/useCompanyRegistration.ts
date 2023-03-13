@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import companyRepository from "repository/company/company.repository";
 import { CompanyDataProps } from "types/user/userData.type";
-import useUserData from "hooks/useCompanyData";
 
 const useCompanyRegistration = () => {
   const [isCompanyRegistrationToggleOpen, setIsCompanyRegistrationToggleOpen] =
@@ -13,26 +13,14 @@ const useCompanyRegistration = () => {
       name: "",
       info: "",
       field: "",
-      generation: "",
+      generation: 0,
       githubId: "",
       companyName: "",
+      companyLatitude: 0,
+      companyLongitude: 0,
       companyAddress: "",
       pw: "",
     });
-
-  const { companyData, setCompanyData } = useUserData();
-
-  const devPositionArray: string[] = [
-    "개발 분야",
-    "FRONTEND",
-    "BACKEND",
-    "IOS",
-    "ANDROID",
-    "DEVOPS",
-    "AI",
-    "DB",
-    "ETC",
-  ];
 
   /** 사용자의 정보를 저장하는 함수에요! */
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,11 +32,17 @@ const useCompanyRegistration = () => {
   const postUserData = async () => {
     // 등록할때 입력을 잘 입력했는지 걸러야함
     try {
-      const data = await companyRepository.PostCompanyRegistration(
+      const { status } = await companyRepository.PostCompanyRegistration(
         companyRegistrationData
       );
+
+      if (status === 200) {
+        toast.success("등록을 성공 하였습니다!");
+      }
     } catch (error) {
-      window.alert("등록실패");
+      toast.error(
+        "오류가 났습니다 다시 해 주세요. (다시 해도 안된다면 관리자에게 문의하세요)"
+      );
     }
   };
 
@@ -60,7 +54,6 @@ const useCompanyRegistration = () => {
     companyRegistrationData,
     setCompanyRegistrationData,
     onChange,
-    devPositionArray,
     postUserData,
   };
 };

@@ -1,29 +1,38 @@
 import { palette } from "style/palette";
 import styled from "styled-components";
 
+export const DodamLogo = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
 export const NavWrapper = styled.div<{ isNavToggle: boolean }>`
   width: 350px;
   position: relative;
-  top: 0px;
   left: ${({ isNavToggle }) => (isNavToggle ? 0 : -350)}px;
   z-index: 1;
   background-color: white;
   box-shadow: 3px 0px 10px 0 rgb(0 0 0 / 15%);
+  transition: 0.4s;
   @media screen and (max-width: 500px) {
+    width: 100%;
     position: fixed;
     top: 70%;
     display: grid;
+    overflow: scroll;
   }
 `;
 
 export const NavContainer = styled.div`
   width: 100%;
   height: calc(100% - 75px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
   overflow: auto;
-  text-align: center;
-  padding-top: 30px;
+  padding: 30px 0px;
   border-right: 1px solid ${palette.gray[200]};
-
   /* 스크롤 바 크기 */
   &::-webkit-scrollbar {
     display: none;
@@ -32,6 +41,7 @@ export const NavContainer = styled.div`
 
 export const NavTitleContainer = styled.div`
   width: 100%;
+  height: 75px;
   padding: 15px;
   background-color: ${palette.main};
   @media screen and (max-width: 500px) {
@@ -87,12 +97,14 @@ export const NavToggleBtnContainer = styled.div<{
   position: relative;
   margin-top: calc((100vh / 2));
   height: 20px;
-  left: ${({ isNavToggle, isSubNavToggle }) =>
-    isNavToggle ? (isSubNavToggle ? 260 : -1) : -350}px;
-  z-index: ${({ isSubNavToggle, isNavToggle }) =>
-    isSubNavToggle ? (isNavToggle ? 10 : 0) : 10};
+  left: ${({ isNavToggle }) => (isNavToggle ? -1 : -350)}px;
+  z-index: ${({ isSubNavToggle }) => (isSubNavToggle ? 0 : 1)};
+  transition: ${({ isSubNavToggle }) => (isSubNavToggle ? 0 : 0.4)}s;
   display: flex;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const NavToggleBtn = styled.button`

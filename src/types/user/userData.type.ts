@@ -1,28 +1,50 @@
 import { Response } from "types/util/response.type";
 
 export interface CompanyDataProps {
-  // 등록 할 땨 서버에 보내는 데이터 타입
+  // 등록 할 때 서버에 보내는 데이터 타입
   companyPlaceId: string;
   name: string;
   info: string;
   field: string;
-  generation: string;
+  generation: number;
   githubId: string;
   companyName: string;
-  companyAddress: string;
+  companyLatitude: number;
+  companyLongitude: number;
   pw: string;
+  companyAddress: string;
+}
+
+export interface UserInfoModifyProps {
+  currentPw: string;
+  field: string;
+  githubId: string;
+  info: string;
+  userId: number;
+}
+
+export interface UserInfoModifyResponse extends Response {
+  data: UserInfoModifyProps;
+}
+
+export interface UserInfoDeleteProps {
+  pw: string;
+  userId: number;
+}
+
+export interface UserInfoDeletePropsResponse extends Response {
+  data: UserInfoDeleteProps;
 }
 
 export interface CompanyInfoList {
   //회사 전체 조회
   address: string;
-  id: string;
   name: string;
-  //회사 좌표
-  position: {
-    lat: number;
-    lng: number;
-  };
+  id: number;
+  latitude: number;
+  longitude: number;
+  symbolLogo: string;
+  textLogo: string;
 }
 
 export interface CompanyInfoListResponse extends Response {
@@ -38,6 +60,7 @@ export interface UserInfoList {
   image: string;
   info: string;
   name: string;
+  isModifyid: boolean;
 }
 
 export interface GetCompanyUserListResponse extends Response {
@@ -45,7 +68,6 @@ export interface GetCompanyUserListResponse extends Response {
 }
 
 export interface CompanyPosition extends CompanyInfoList {
-  //
   companyPlaceId: string;
   name: string;
   info: string;

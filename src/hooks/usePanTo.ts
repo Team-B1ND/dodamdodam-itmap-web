@@ -11,7 +11,7 @@ const usePanTo = (companyLocation: string) => {
   /** 클릭을 하면 화면이 마커로 부드럽게 이동해요! */
   const movePanTo = () => {
     if (lat && lng) {
-      map.setLevel(4);
+      map.setLevel(3);
       map.panTo(new kakao.maps.LatLng(lat, lng));
       dispatch(nav({ isNavToggle: true, isSubNavToggle: true }));
     }

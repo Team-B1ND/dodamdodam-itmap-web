@@ -7,15 +7,15 @@ import {
 class CompanyRepository {
   public async PostCompanyRegistration(
     userData: CompanyDataProps
-  ): Promise<CompanyDataProps> {
-    const { data } = await customAxios.post("/itmap/user", userData);
+  ): Promise<Response> {
+    const { data } = await customAxios.post("/user", userData);
     return data;
   }
 
   public async GetCompanyUserData(
-    userId: string
+    userId: number
   ): Promise<GetCompanyUserListResponse> {
-    const { data } = await customAxios.get(`/itmap/user/company/${userId}`);
+    const { data } = await customAxios.get(`/user/company/${userId}`);
     return data;
   }
 }

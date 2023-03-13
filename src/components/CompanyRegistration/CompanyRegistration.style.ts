@@ -69,20 +69,7 @@ export const CompanyRegistrationModal = styled.div`
   }
 `;
 
-export const NameInput = styled.input`
-  width: 100%;
-  height: 30px;
-  margin: 20px 0;
-  padding-left: 10px;
-  outline: none;
-  border: 1px solid ${palette.gray[300]};
-
-  &:focus {
-    border: 1px solid ${palette.gray[500]};
-  }
-`;
-
-export const CompanyAddressContainer = styled.div`
+export const CompanyAddressContainer = styled.form`
   width: 100%;
   height: 30px;
   margin: 20px 0;
@@ -95,6 +82,7 @@ export const UserInfoInput = styled.input`
   width: 100%;
   height: 30px;
   outline: none;
+  font-size: 0.9rem;
   margin-top: 20px;
   padding-left: 10px;
   border: 1px solid ${palette.gray[300]};
@@ -107,6 +95,7 @@ export const UserInfoSelect = styled.select`
   width: 48%;
   height: 30px;
   outline: none;
+  font-size: 0.9rem;
   margin-top: 20px;
   padding-left: 10px;
   border: 1px solid ${palette.gray[300]};
@@ -121,6 +110,7 @@ export const UserInfoGeneration = styled.input`
   outline: none;
   margin-top: 20px;
   padding-left: 10px;
+  font-size: 0.9rem;
   border: 1px solid ${palette.gray[300]};
   &:focus {
     border: 1px solid ${palette.gray[500]};
@@ -131,6 +121,7 @@ export const CompanyAddressBox = styled.input`
   width: 65%;
   height: 100%;
   outline: none;
+  font-size: 0.9rem;
   padding-left: 10px;
   border: 1px solid ${palette.gray[300]};
   &:focus {
@@ -144,6 +135,8 @@ export const CompanyAddressSearch = styled.button`
   outline: none;
   border: none;
   color: white;
+  font-size: 0.9rem;
+
   cursor: pointer;
   background-color: ${palette.main};
 `;
@@ -152,14 +145,16 @@ export const CompanyRegistrationSubmitBtnContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 25px;
 `;
 
 export const CompanyRegistrationSubmitBtn = styled.button`
   border: none;
   color: white;
   padding: 12px;
+  font-size: 0.9rem;
   border-radius: 4px;
+  cursor: pointer;
   background-color: ${palette.main};
 `;
 
@@ -167,20 +162,28 @@ export const CompanySelectContainer = styled.div`
   width: 100%;
   height: 330px;
   overflow: auto;
+  display: flex;
   align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
   background-color: ${palette.gray[200]};
   &::-webkit-scrollbar-track {
     background-color: none;
   }
 `;
 
-export const CompanySelect = styled.div`
+export const CompanySelect = styled.button`
+  width: 95%;
   padding: 10px;
-  margin: 10px 10px 0 10px;
-  border: 1px solid ${palette.gray[400]};
+  border: 2px solid ${palette.gray[400]};
   cursor: pointer;
   background-color: #fff;
   transition: 0.2s;
+  text-align: left;
+  &:focus {
+    border: 2px solid ${palette.main};
+  }
 `;
 
 export const CompanyAddressTitle = styled.div`
@@ -215,16 +218,18 @@ export const CompanyPlaceName = styled.div`
 export const CompanyAddressName = styled.p`
   width: 80%;
   font-size: 0.9rem;
-  &:hover {
-    text-decoration: underline;
-  }
   &::-webkit-scrollbar {
     display: none;
   }
 `;
 
 export const CompanyInFoPageMove = styled.div`
+  width: 100%;
   font-size: 0.8rem;
-  text-align: end;
+  display: flex;
+  justify-content: right;
+`;
+
+export const CompanyInFoPageMoveBtn = styled.div`
   text-decoration: underline;
 `;

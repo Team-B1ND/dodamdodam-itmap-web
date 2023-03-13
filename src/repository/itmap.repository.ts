@@ -3,7 +3,7 @@ import { CompanyInfoListResponse } from "../types/user/userData.type";
 
 class itMapRepository {
   public async GetCompanyData(): Promise<CompanyInfoListResponse> {
-    const { data } = await customAxios.get("/itmap/companies");
+    const { data } = await customAxios.get("/companies");
     return data;
   }
 }

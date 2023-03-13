@@ -12,8 +12,18 @@ export const CustomOverlayContainar = styled.div`
   border-radius: 4px;
 `;
 
+export const CompanyLogo = styled.img`
+  width: 40px;
+  height: 40px;
+  font-size: 1.4rem;
+  padding: 6px;
+  object-fit: contain;
+`;
+
 export const UserCompanyNameContanier = styled.div`
   padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
 `;
 
 export const BoxTail = styled.div`
